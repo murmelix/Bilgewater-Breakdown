@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AFF90DBA-B209-4B1B-A0A5-650A152EC866}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lol.Bilgewater</RootNamespace>
+    <AssemblyName>Lol.Bilgewater</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.readable.css" />
+    <Content Include="Content\bootstrap.slate.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <None Include="Properties\PublishProfiles\lol-itemsets - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\lol-itemsets - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Image\Champion\Aatrox.png" />
+    <Content Include="Image\Champion\Ahri.png" />
+    <Content Include="Image\Champion\Akali.png" />
+    <Content Include="Image\Champion\Alistar.png" />
+    <Content Include="Image\Champion\Amumu.png" />
+    <Content Include="Image\Champion\Anivia.png" />
+    <Content Include="Image\Champion\Annie.png" />
+    <Content Include="Image\Champion\Ashe.png" />
+    <Content Include="Image\Champion\Azir.png" />
+    <Content Include="Image\Champion\Blitzcrank.png" />
+    <Content Include="Image\Champion\Brand.png" />
+    <Content Include="Image\Champion\Braum.png" />
+    <Content Include="Image\Champion\Caitlyn.png" />
+    <Content Include="Image\Champion\Cassiopeia.png" />
+    <Content Include="Image\Champion\Chogath.png" />
+    <Content Include="Image\Champion\Corki.png" />
+    <Content Include="Image\Champion\Darius.png" />
+    <Content Include="Image\Champion\Diana.png" />
+    <Content Include="Image\Champion\Draven.png" />
+    <Content Include="Image\Champion\DrMundo.png" />
+    <Content Include="Image\Champion\Elise.png" />
+    <Content Include="Image\Champion\Evelynn.png" />
+    <Content Include="Image\Champion\Ezreal.png" />
+    <Content Include="Image\Champion\FiddleSticks.png" />
+    <Content Include="Image\Champion\Fiora.png" />
+    <Content Include="Image\Champion\Fizz.png" />
+    <Content Include="Image\Champion\Galio.png" />
+    <Content Include="Image\Champion\Gangplank.png" />
+    <Content Include="Image\Champion\Garen.png" />
+    <Content Include="Image\Champion\Gnar.png" />
+    <Content Include="Image\Champion\Gragas.png" />
+    <Content Include="Image\Champion\Graves.png" />
+    <Content Include="Image\Champion\Hecarim.png" />
+    <Content Include="Image\Champion\Heimerdinger.png" />
+    <Content Include="Image\Champion\Irelia.png" />
+    <Content Include="Image\Champion\Janna.png" />
+    <Content Include="Image\Champion\JarvanIV.png" />
+    <Content Include="Image\Champion\Jax.png" />
+    <Content Include="Image\Champion\Jayce.png" />
+    <Content Include="Image\Champion\Jinx.png" />
+    <Content Include="Image\Champion\Kalista.png" />
+    <Content Include="Image\Champion\Karma.png" />
+    <Content Include="Image\Champion\Karthus.png" />
+    <Content Include="Image\Champion\Kassadin.png" />
+    <Content Include="Image\Champion\Katarina.png" />
+    <Content Include="Image\Champion\Kayle.png" />
+    <Content Include="Image\Champion\Kennen.png" />
+    <Content Include="Image\Champion\Khazix.png" />
+    <Content Include="Image\Champion\KogMaw.png" />
+    <Content Include="Image\Champion\Leblanc.png" />
+    <Content Include="Image\Champion\LeeSin.png" />
+    <Content Include="Image\Champion\Leona.png" />
+    <Content Include="Image\Champion\Lissandra.png" />
+    <Content Include="Image\Champion\Lucian.png" />
+    <Content Include="Image\Champion\Lulu.png" />
+    <Content Include="Image\Champion\Lux.png" />
+    <Content Include="Image\Champion\Malphite.png" />
+    <Content Include="Image\Champion\Malzahar.png" />
+    <Content Include="Image\Champion\Maokai.png" />
+    <Content Include="Image\Champion\MasterYi.png" />
+    <Content Include="Image\Champion\MissFortune.png" />
+    <Content Include="Image\Champion\MonkeyKing.png" />
+    <Content Include="Image\Champion\Mordekaiser.png" />
+    <Content Include="Image\Champion\Morgana.png" />
+    <Content Include="Image\Champion\Nami.png" />
+    <Content Include="Image\Champion\Nasus.png" />
+    <Content Include="Image\Champion\Nautilus.png" />
+    <Content Include="Image\Champion\Nidalee.png" />
+    <Content Include="Image\Champion\Nocturne.png" />
+    <Content Include="Image\Champion\Nunu.png" />
+    <Content Include="Image\Champion\Olaf.png" />
+    <Content Include="Image\Champion\Orianna.png" />
+    <Content Include="Image\Champion\Pantheon.png" />
+    <Content Include="Image\Champion\Poppy.png" />
+    <Content Include="Image\Champion\Quinn.png" />
+    <Content Include="Image\Champion\Rammus.png" />
+    <Content Include="Image\Champion\RekSai.png" />
+    <Content Include="Image\Champion\Renekton.png" />
+    <Content Include="Image\Champion\Rengar.png" />
+    <Content Include="Image\Champion\Riven.png" />
+    <Content Include="Image\Champion\Rumble.png" />
+    <Content Include="Image\Champion\Ryze.png" />
+    <Content Include="Image\Champion\Sejuani.png" />
+    <Content Include="Image\Champion\Shaco.png" />
+    <Content Include="Image\Champion\Shen.png" />
+    <Content Include="Image\Champion\Shyvana.png" />
+    <Content Include="Image\Champion\Singed.png" />
+    <Content Include="Image\Champion\Sion.png" />
+    <Content Include="Image\Champion\Sivir.png" />
+    <Content Include="Image\Champion\Skarner.png" />
+    <Content Include="Image\Champion\Sona.png" />
+    <Content Include="Image\Champion\Soraka.png" />
+    <Content Include="Image\Champion\Swain.png" />
+    <Content Include="Image\Champion\Syndra.png" />
+    <Content Include="Image\Champion\Talon.png" />
+    <Content Include="Image\Champion\Taric.png" />
+    <Content Include="Image\Champion\Teemo.png" />
+    <Content Include="Image\Champion\Thresh.png" />
+    <Content Include="Image\Champion\Tristana.png" />
+    <Content Include="Image\Champion\Trundle.png" />
+    <Content Include="Image\Champion\Tryndamere.png" />
+    <Content Include="Image\Champion\TwistedFate.png" />
+    <Content Include="Image\Champion\Twitch.png" />
+    <Content Include="Image\Champion\Udyr.png" />
+    <Content Include="Image\Champion\Urgot.png" />
+    <Content Include="Image\Champion\Varus.png" />
+    <Content Include="Image\Champion\Vayne.png" />
+    <Content Include="Image\Champion\Veigar.png" />
+    <Content Include="Image\Champion\Velkoz.png" />
+    <Content Include="Image\Champion\Vi.png" />
+    <Content Include="Image\Champion\Viktor.png" />
+    <Content Include="Image\Champion\Vladimir.png" />
+    <Content Include="Image\Champion\Volibear.png" />
+    <Content Include="Image\Champion\Warwick.png" />
+    <Content Include="Image\Champion\Xerath.png" />
+    <Content Include="Image\Champion\XinZhao.png" />
+    <Content Include="Image\Champion\Yasuo.png" />
+    <Content Include="Image\Champion\Yorick.png" />
+    <Content Include="Image\Champion\Zac.png" />
+    <Content Include="Image\Champion\Zed.png" />
+    <Content Include="Image\Champion\Ziggs.png" />
+    <Content Include="Image\Champion\Zilean.png" />
+    <Content Include="Image\Champion\Zyra.png" />
+    <Content Include="Image\Flag\cs-CZ.png" />
+    <Content Include="Image\Flag\de-DE.png" />
+    <Content Include="Image\Flag\en-UK.png" />
+    <Content Include="Image\Flag\en-US.png" />
+    <Content Include="Image\Flag\fr-FR.png" />
+    <Content Include="Image\Flag\it-IT.png" />
+    <Content Include="Image\Flag\ko-KR.png" />
+    <Content Include="Image\Flag\pl-PL.png" />
+    <Content Include="Image\Flag\ru-RU.png" />
+    <Content Include="Image\Item\1001.png" />
+    <Content Include="Image\Item\1004.png" />
+    <Content Include="Image\Item\1006.png" />
+    <Content Include="Image\Item\1011.png" />
+    <Content Include="Image\Item\1018.png" />
+    <Content Include="Image\Item\1026.png" />
+    <Content Include="Image\Item\1027.png" />
+    <Content Include="Image\Item\1028.png" />
+    <Content Include="Image\Item\1029.png" />
+    <Content Include="Image\Item\1031.png" />
+    <Content Include="Image\Item\1033.png" />
+    <Content Include="Image\Item\1036.png" />
+    <Content Include="Image\Item\1037.png" />
+    <Content Include="Image\Item\1038.png" />
+    <Content Include="Image\Item\1039.png" />
+    <Content Include="Image\Item\1042.png" />
+    <Content Include="Image\Item\1043.png" />
+    <Content Include="Image\Item\1051.png" />
+    <Content Include="Image\Item\1052.png" />
+    <Content Include="Image\Item\1053.png" />
+    <Content Include="Image\Item\1054.png" />
+    <Content Include="Image\Item\1055.png" />
+    <Content Include="Image\Item\1056.png" />
+    <Content Include="Image\Item\1057.png" />
+    <Content Include="Image\Item\1058.png" />
+    <Content Include="Image\Item\1062.png" />
+    <Content Include="Image\Item\1063.png" />
+    <Content Include="Image\Item\1074.png" />
+    <Content Include="Image\Item\1075.png" />
+    <Content Include="Image\Item\1076.png" />
+    <Content Include="Image\Item\2003.png" />
+    <Content Include="Image\Item\2004.png" />
+    <Content Include="Image\Item\2009.png" />
+    <Content Include="Image\Item\2010.png" />
+    <Content Include="Image\Item\2041.png" />
+    <Content Include="Image\Item\2043.png" />
+    <Content Include="Image\Item\2044.png" />
+    <Content Include="Image\Item\2045.png" />
+    <Content Include="Image\Item\2047.png" />
+    <Content Include="Image\Item\2049.png" />
+    <Content Include="Image\Item\2050.png" />
+    <Content Include="Image\Item\2051.png" />
+    <Content Include="Image\Item\2052.png" />
+    <Content Include="Image\Item\2053.png" />
+    <Content Include="Image\Item\2054.png" />
+    <Content Include="Image\Item\2137.png" />
+    <Content Include="Image\Item\2138.png" />
+    <Content Include="Image\Item\2139.png" />
+    <Content Include="Image\Item\2140.png" />
+    <Content Include="Image\Item\3001.png" />
+    <Content Include="Image\Item\3003.png" />
+    <Content Include="Image\Item\3004.png" />
+    <Content Include="Image\Item\3006.png" />
+    <Content Include="Image\Item\3007.png" />
+    <Content Include="Image\Item\3008.png" />
+    <Content Include="Image\Item\3009.png" />
+    <Content Include="Image\Item\3010.png" />
+    <Content Include="Image\Item\3020.png" />
+    <Content Include="Image\Item\3022.png" />
+    <Content Include="Image\Item\3023.png" />
+    <Content Include="Image\Item\3024.png" />
+    <Content Include="Image\Item\3025.png" />
+    <Content Include="Image\Item\3026.png" />
+    <Content Include="Image\Item\3027.png" />
+    <Content Include="Image\Item\3028.png" />
+    <Content Include="Image\Item\3029.png" />
+    <Content Include="Image\Item\3031.png" />
+    <Content Include="Image\Item\3035.png" />
+    <Content Include="Image\Item\3040.png" />
+    <Content Include="Image\Item\3041.png" />
+    <Content Include="Image\Item\3042.png" />
+    <Content Include="Image\Item\3043.png" />
+    <Content Include="Image\Item\3044.png" />
+    <Content Include="Image\Item\3046.png" />
+    <Content Include="Image\Item\3047.png" />
+    <Content Include="Image\Item\3048.png" />
+    <Content Include="Image\Item\3050.png" />
+    <Content Include="Image\Item\3056.png" />
+    <Content Include="Image\Item\3057.png" />
+    <Content Include="Image\Item\3060.png" />
+    <Content Include="Image\Item\3065.png" />
+    <Content Include="Image\Item\3067.png" />
+    <Content Include="Image\Item\3068.png" />
+    <Content Include="Image\Item\3069.png" />
+    <Content Include="Image\Item\3070.png" />
+    <Content Include="Image\Item\3071.png" />
+    <Content Include="Image\Item\3072.png" />
+    <Content Include="Image\Item\3073.png" />
+    <Content Include="Image\Item\3074.png" />
+    <Content Include="Image\Item\3075.png" />
+    <Content Include="Image\Item\3077.png" />
+    <Content Include="Image\Item\3078.png" />
+    <Content Include="Image\Item\3082.png" />
+    <Content Include="Image\Item\3083.png" />
+    <Content Include="Image\Item\3084.png" />
+    <Content Include="Image\Item\3085.png" />
+    <Content Include="Image\Item\3086.png" />
+    <Content Include="Image\Item\3087.png" />
+    <Content Include="Image\Item\3089.png" />
+    <Content Include="Image\Item\3090.png" />
+    <Content Include="Image\Item\3091.png" />
+    <Content Include="Image\Item\3092.png" />
+    <Content Include="Image\Item\3093.png" />
+    <Content Include="Image\Item\3096.png" />
+    <Content Include="Image\Item\3097.png" />
+    <Content Include="Image\Item\3098.png" />
+    <Content Include="Image\Item\3100.png" />
+    <Content Include="Image\Item\3101.png" />
+    <Content Include="Image\Item\3102.png" />
+    <Content Include="Image\Item\3104.png" />
+    <Content Include="Image\Item\3105.png" />
+    <Content Include="Image\Item\3106.png" />
+    <Content Include="Image\Item\3108.png" />
+    <Content Include="Image\Item\3110.png" />
+    <Content Include="Image\Item\3111.png" />
+    <Content Include="Image\Item\3112.png" />
+    <Content Include="Image\Item\3113.png" />
+    <Content Include="Image\Item\3114.png" />
+    <Content Include="Image\Item\3115.png" />
+    <Content Include="Image\Item\3116.png" />
+    <Content Include="Image\Item\3117.png" />
+    <Content Include="Image\Item\3122.png" />
+    <Content Include="Image\Item\3124.png" />
+    <Content Include="Image\Item\3134.png" />
+    <Content Include="Image\Item\3135.png" />
+    <Content Include="Image\Item\3136.png" />
+    <Content Include="Image\Item\3137.png" />
+    <Content Include="Image\Item\3139.png" />
+    <Content Include="Image\Item\3140.png" />
+    <Content Include="Image\Item\3141.png" />
+    <Content Include="Image\Item\3142.png" />
+    <Content Include="Image\Item\3143.png" />
+    <Content Include="Image\Item\3144.png" />
+    <Content Include="Image\Item\3145.png" />
+    <Content Include="Image\Item\3146.png" />
+    <Content Include="Image\Item\3151.png" />
+    <Content Include="Image\Item\3152.png" />
+    <Content Include="Image\Item\3153.png" />
+    <Content Include="Image\Item\3154.png" />
+    <Content Include="Image\Item\3155.png" />
+    <Content Include="Image\Item\3156.png" />
+    <Content Include="Image\Item\3157.png" />
+    <Content Include="Image\Item\3158.png" />
+    <Content Include="Image\Item\3159.png" />
+    <Content Include="Image\Item\3165.png" />
+    <Content Include="Image\Item\3170.png" />
+    <Content Include="Image\Item\3172.png" />
+    <Content Include="Image\Item\3174.png" />
+    <Content Include="Image\Item\3180.png" />
+    <Content Include="Image\Item\3181.png" />
+    <Content Include="Image\Item\3184.png" />
+    <Content Include="Image\Item\3185.png" />
+    <Content Include="Image\Item\3187.png" />
+    <Content Include="Image\Item\3190.png" />
+    <Content Include="Image\Item\3191.png" />
+    <Content Include="Image\Item\3196.png" />
+    <Content Include="Image\Item\3197.png" />
+    <Content Include="Image\Item\3198.png" />
+    <Content Include="Image\Item\3200.png" />
+    <Content Include="Image\Item\3211.png" />
+    <Content Include="Image\Item\3222.png" />
+    <Content Include="Image\Item\3285.png" />
+    <Content Include="Image\Item\3290.png" />
+    <Content Include="Image\Item\3301.png" />
+    <Content Include="Image\Item\3302.png" />
+    <Content Include="Image\Item\3303.png" />
+    <Content Include="Image\Item\3340.png" />
+    <Content Include="Image\Item\3341.png" />
+    <Content Include="Image\Item\3342.png" />
+    <Content Include="Image\Item\3345.png" />
+    <Content Include="Image\Item\3348.png" />
+    <Content Include="Image\Item\3361.png" />
+    <Content Include="Image\Item\3362.png" />
+    <Content Include="Image\Item\3363.png" />
+    <Content Include="Image\Item\3364.png" />
+    <Content Include="Image\Item\3401.png" />
+    <Content Include="Image\Item\3460.png" />
+    <Content Include="Image\Item\3504.png" />
+    <Content Include="Image\Item\3508.png" />
+    <Content Include="Image\Item\3512.png" />
+    <Content Include="Image\Item\3599.png" />
+    <Content Include="Image\Item\3706.png" />
+    <Content Include="Image\Item\3707.png" />
+    <Content Include="Image\Item\3708.png" />
+    <Content Include="Image\Item\3709.png" />
+    <Content Include="Image\Item\3710.png" />
+    <Content Include="Image\Item\3711.png" />
+    <Content Include="Image\Item\3713.png" />
+    <Content Include="Image\Item\3714.png" />
+    <Content Include="Image\Item\3715.png" />
+    <Content Include="Image\Item\3716.png" />
+    <Content Include="Image\Item\3717.png" />
+    <Content Include="Image\Item\3718.png" />
+    <Content Include="Image\Item\3719.png" />
+    <Content Include="Image\Item\3720.png" />
+    <Content Include="Image\Item\3721.png" />
+    <Content Include="Image\Item\3722.png" />
+    <Content Include="Image\Item\3723.png" />
+    <Content Include="Image\Item\3724.png" />
+    <Content Include="Image\Item\3725.png" />
+    <Content Include="Image\Item\3726.png" />
+    <Content Include="Image\Item\3751.png" />
+    <Content Include="Image\Item\3800.png" />
+    <Content Include="Image\Item\3801.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\doT.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Cache\" />
+    <Folder Include="Views\Data\" />
+    <Folder Include="Views\Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lol.Api\Lol.Api.csproj">
+      <Project>{77e17e83-4d9c-486b-8e7d-7f960f6f4488}</Project>
+      <Name>Lol.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50875</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50875/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

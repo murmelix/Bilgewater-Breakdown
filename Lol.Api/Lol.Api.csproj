@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{77E17E83-4D9C-486B-8E7D-7F960F6F4488}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Lol.Api</RootNamespace>
+    <AssemblyName>Lol.Api</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Static\Block.cs" />
+    <Compile Include="Static\Champion\Champion.cs" />
+    <Compile Include="Static\Champion\ChampionList.cs" />
+    <Compile Include="Static\Champion\ChampionSpell.cs" />
+    <Compile Include="Static\Champion\Info.cs" />
+    <Compile Include="Static\Champion\LevelTip.cs" />
+    <Compile Include="Static\Champion\Passive.cs" />
+    <Compile Include="Static\Champion\Skin.cs" />
+    <Compile Include="Static\Champion\SpellVars.cs" />
+    <Compile Include="Static\Champion\Stats.cs" />
+    <Compile Include="Static\Items\BlockItem.cs" />
+    <Compile Include="Static\Match\BannedChampion.cs" />
+    <Compile Include="Static\Match\Frame.cs" />
+    <Compile Include="Static\Match\Mastery.cs" />
+    <Compile Include="Static\Match\MatchDetail.cs" />
+    <Compile Include="Static\Match\Participant.cs" />
+    <Compile Include="Static\Match\ParticipantIdentity.cs" />
+    <Compile Include="Static\Match\ParticipantStats.cs" />
+    <Compile Include="Static\Match\ParticipantTimeline.cs" />
+    <Compile Include="Static\Match\Player.cs" />
+    <Compile Include="Static\Match\Rune.cs" />
+    <Compile Include="Static\Match\Team.cs" />
+    <Compile Include="Static\Match\Timeline.cs" />
+    <Compile Include="Static\StaticJsonAdapter.cs" />
+    <Compile Include="Static\Recommended.cs" />
+    <Compile Include="Static\Items\BasicData.cs" />
+    <Compile Include="Static\Items\BasicDataStats.cs" />
+    <Compile Include="Static\Items\Gold.cs" />
+    <Compile Include="Static\Items\Group.cs" />
+    <Compile Include="Static\Image.cs" />
+    <Compile Include="Static\Items\Item.cs" />
+    <Compile Include="Static\Items\ItemList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Static\Items\ItemTree.cs" />
+    <Compile Include="Static\Items\MetaData.cs" />
+    <Compile Include="Toolkit\NoCacheAttribute.cs" />
+    <Compile Include="Toolkit\SupportedCultures.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
