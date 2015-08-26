@@ -9,5 +9,9 @@ namespace Lol.Api.Static.Match
     [DataContract]
     public class Mastery
     {
+        [DataMember(Name = "masteryId")]
+        public long MasteryId { get; set; }
+        [DataMember(Name = "rank")]
+        public long Rank { get; set; }
     }
 }

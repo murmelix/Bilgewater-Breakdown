@@ -12,6 +12,8 @@
 [Rr]elease/
 x64/
 build/
+packages/
+match/
 [Bb]in/
 [Oo]bj/
 
@@ -45,6 +47,7 @@ build/
 *.pidb
 *.log
 *.scc
+*.json
 
 # Visual C++ cache files
 ipch/
@@ -158,3 +161,11 @@ Lol.Matchloader/Content/euw/euw_matches.zip
 Lol.Matchloader/Content/na/na_matches.zip
 Lol.Matchloader/Content/euw/euw_matches.zip
 Lol.Matchloader/Content/na/na_matches.zip
+Lol.Matchloader/Content/Match/na/na_matches.zip
+*.json
+*.zip
+*.proto
+Lol.Bilgewater/Web.config
+Lol.Bilgewater/Web.config
+*.bat
+*.dll

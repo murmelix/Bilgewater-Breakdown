@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Lol.Itemsets.Startup))]
-namespace Lol.Itemsets
+[assembly: OwinStartupAttribute(typeof(Lol.Bilgewater.Startup))]
+namespace Lol.Bilgewater
 {
     public partial class Startup
     {

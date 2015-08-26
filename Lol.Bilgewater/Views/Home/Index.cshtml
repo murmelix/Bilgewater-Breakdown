@@ -1,4 +1,4 @@
-﻿@model Lol.Itemsets.Models.ViewModel
+﻿@model Lol.Bilgewater.Models.ViewModel
 @{
     ViewBag.Title = "Home Page";
 }
@@ -10,7 +10,7 @@
                 <a href="javascript:void(0)" class="list-group-item">
                     <input id="champFilter" name="champFilter" type="text" class="form-control" placeholder="Search" />
                 </a>
-                @foreach (var x in Lol.Itemsets.Models.ViewModel.Champions.Values.OrderBy(x=>x.Name))
+                @foreach (var x in Lol.Bilgewater.Models.ViewModel.Champions.Values.OrderBy(x => x.Name))
                 {
                     <a rel="@(x.Name.ToLower())" href="javascript:void(0)" class="list-group-item champ @(x.Key == Model.CurrentChampion ? "active": "")">
                         <span class="badge">@x.CustomCount</span>
@@ -115,7 +115,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="well">
-                    @foreach (var x in Lol.Itemsets.Models.ViewModel.Items.Values)
+                    @foreach (var x in Lol.Bilgewater.Models.ViewModel.Items.Values)
                     {
                         if (!x.HideFromAll)
                         {

@@ -52,7 +52,7 @@ namespace Lol.Api.Static.Items
                     wc.Encoding = Encoding.UTF8;
                     using (wc)
                     {
-                        var json = wc.DownloadString(string.Format("https://euw.api.pvp.net/api/lol/{1}/v2.2/match/{2}?includeTimeline=true&api_key={0}", apikey, region, matchId));
+                        var json = wc.DownloadString(string.Format("https://euw.api.pvp.net/api/lol/{1}/v2.2/match/{2}?includeTimeline=true&api_key={0}&version=5.14.1", apikey, region, matchId));
                         path = Path.Combine(_cachePath, region, matchId + ".json");
                         zip.BeginUpdate();
                         using (var sw = new StreamWriter(path, false, Encoding.UTF8))
@@ -80,7 +80,7 @@ namespace Lol.Api.Static.Items
                 wc.Encoding = Encoding.UTF8;
                 using (wc)
                 {
-                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/item?locale={0}&itemListData=all&api_key={1}", locale, apikey, region));
+                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/item?locale={0}&itemListData=all&api_key={1}&version=5.14.1", locale, apikey, region));
                     using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                         sw.Write(json);
                     return JsonConvert.DeserializeObject<ItemList>(json, new JsonSerializerSettings { Culture = Thread.CurrentThread.CurrentUICulture, });
@@ -102,7 +102,7 @@ namespace Lol.Api.Static.Items
                 wc.Encoding = Encoding.UTF8;
                 using (wc)
                 {
-                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/champion?locale={0}&champData=all&api_key={1}", locale, apikey, region));
+                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/champion?locale={0}&champData=all&api_key={1}&version=5.14.1", locale, apikey, region));
                     using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                         sw.Write(json);
                     return JsonConvert.DeserializeObject<ChampionList>(json, new JsonSerializerSettings { Culture = Thread.CurrentThread.CurrentUICulture, });

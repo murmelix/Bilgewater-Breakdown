@@ -7,7 +7,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Configuration;
 
-namespace Lol.Itemsets.Models
+namespace Lol.Bilgewater.Models
 {
     public class ViewModel
     {

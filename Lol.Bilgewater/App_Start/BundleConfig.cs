@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace Lol.Itemsets
+namespace Lol.Bilgewater
 {
     public class BundleConfig
     {

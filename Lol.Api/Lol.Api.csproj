@@ -37,8 +37,26 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Obvs">
+      <HintPath>..\packages\Obvs.2.0.0.22\lib\net45\Obvs.dll</HintPath>
+    </Reference>
+    <Reference Include="Obvs.Serialization.ProtoBuf">
+      <HintPath>..\packages\Obvs.Serialization.ProtoBuf.2.0.0.11\lib\net45\Obvs.Serialization.ProtoBuf.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
@@ -51,6 +69,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bilgewater\MercStatistcs.cs" />
+    <Compile Include="Bilgewater\MercTeam.cs" />
+    <Compile Include="Bilgewater\MercData.cs" />
+    <Compile Include="Bilgewater\Participant.cs" />
+    <Compile Include="Bilgewater\Samples\ChampionStat.cs" />
+    <Compile Include="Bilgewater\Samples\DurationStats.cs" />
+    <Compile Include="Bilgewater\Samples\MercStats.cs" />
     <Compile Include="Static\Block.cs" />
     <Compile Include="Static\Champion\Champion.cs" />
     <Compile Include="Static\Champion\ChampionList.cs" />
@@ -63,14 +88,18 @@
     <Compile Include="Static\Champion\Stats.cs" />
     <Compile Include="Static\Items\BlockItem.cs" />
     <Compile Include="Static\Match\BannedChampion.cs" />
+    <Compile Include="Static\Match\Event.cs" />
     <Compile Include="Static\Match\Frame.cs" />
     <Compile Include="Static\Match\Mastery.cs" />
     <Compile Include="Static\Match\MatchDetail.cs" />
     <Compile Include="Static\Match\Participant.cs" />
+    <Compile Include="Static\Match\ParticipantFrame.cs" />
     <Compile Include="Static\Match\ParticipantIdentity.cs" />
     <Compile Include="Static\Match\ParticipantStats.cs" />
     <Compile Include="Static\Match\ParticipantTimeline.cs" />
+    <Compile Include="Static\Match\ParticipantTimelineData.cs" />
     <Compile Include="Static\Match\Player.cs" />
+    <Compile Include="Static\Match\Position.cs" />
     <Compile Include="Static\Match\Rune.cs" />
     <Compile Include="Static\Match\Team.cs" />
     <Compile Include="Static\Match\Timeline.cs" />

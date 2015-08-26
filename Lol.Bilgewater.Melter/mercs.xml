@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MetaInformations>
+  <Merc>3611</Merc>
+  <Merc>3612</Merc>
+  <Merc>3613</Merc>
+  <Merc>3614</Merc>
+  <Item>3924</Item>
+  <Item>3911</Item>
+  <Item>3742</Item>
+  <Item>3745</Item>
+  <Item>3744</Item>
+  <Item>3844</Item>
+  <Item>3841</Item>
+  <Item>3840</Item>
+  <Item>3829</Item>
+  <Item>3150</Item>
+  <Item>3430</Item>
+  <Item>3431</Item>
+  <Item>3434</Item>
+  <Item>3433</Item>
+  <Item>3652</Item>
+  <Upgrade Id="3615" Lvl="1"/>
+  <Upgrade Id="3616" Lvl="2"/>
+  <Upgrade Id="3617" Lvl="3"/>
+  <Offense Id="3621" Lvl="1"/>
+  <Offense Id="3622" Lvl="2"/>
+  <Offense Id="3623" Lvl="3"/>
+  <Defense Id="3624" Lvl="1"/>
+  <Defense Id="3625" Lvl="2"/>
+  <Defense Id="3626" Lvl="3"/>
+</MetaInformations>

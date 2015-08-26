@@ -2,7 +2,8 @@
 using Lol.Api.Static;
 using Lol.Api.Static.Champion;
 using Lol.Api.Static.Items;
-using Lol.Itemsets.Models;
+using Lol.Api.Static.Match;
+using Lol.Bilgewater.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,13 +17,14 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 
-namespace Lol.Itemsets.Controllers
+namespace Lol.Bilgewater.Controllers
 {
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            FetchAllMatches("euw");
+            var bwitems = ViewModel.Items.Where(x => x.Value.Tags != null && x.Value.Tags.Contains("Bilgewater")).Select(x => new { Id = x.Value.Id, Name = x.Value.Name }).ToList();
+            string bw = JsonConvert.SerializeObject(bwitems);
             ViewBag.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             return View(ViewModel.FromSession);
         }

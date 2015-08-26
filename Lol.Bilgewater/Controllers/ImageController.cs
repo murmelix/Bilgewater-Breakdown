@@ -6,7 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Lol.Itemsets.Controllers
+namespace Lol.Bilgewater.Controllers
 {
     public class ImageController : Controller
     {

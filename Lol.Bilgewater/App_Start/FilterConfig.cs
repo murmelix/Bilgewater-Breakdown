@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace Lol.Itemsets
+namespace Lol.Bilgewater
 {
     public class FilterConfig
     {

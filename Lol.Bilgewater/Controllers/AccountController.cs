@@ -8,9 +8,9 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
-using Lol.Itemsets.Models;
+using Lol.Bilgewater.Models;
 
-namespace Lol.Itemsets.Controllers
+namespace Lol.Bilgewater.Controllers
 {
     [Authorize]
     public class AccountController : Controller

@@ -3,7 +3,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 
-namespace Lol.Itemsets
+namespace Lol.Bilgewater
 {
     public partial class Startup
     {
