@@ -16,8 +16,11 @@ namespace Lol.Matchloader.Console
         static bool running = true;
         static string apiKey = null;
         static string region = null;
+        static string data_path = null;
+        static string currentTarget = "BILGEWATER";
         static void Main(string[] args)
         {
+            data_path = System.Configuration.ConfigurationSettings.AppSettings["DataPath"];
             region = args[0];
             apiKey = args[1];
             Thread t = new Thread(Run);
@@ -30,14 +33,16 @@ namespace Lol.Matchloader.Console
 
         static void Run()
         {
+            var src_Path = Path.Combine(data_path, currentTarget, "Source");
+            var target_Path = Path.Combine(data_path, currentTarget, "Raw", region);
             try
             {
                 string listdata;
-                using (var sr = new StreamReader(Path.Combine("..", "..", "RANKED_SOLO", region + ".json"), Encoding.UTF8))
+                using (var sr = new StreamReader(Path.Combine(src_Path, region + ".json"), Encoding.UTF8))
                 {
                     listdata = sr.ReadToEnd();
                 }
-                string zippath = Path.Combine("..", "..", "Match", region, region + "_matches.zip");
+                string zippath = Path.Combine(target_Path, region + "_matches.zip");
                 string path;
                 ZipFile zip;
                 if (System.IO.File.Exists(zippath))
@@ -56,13 +61,13 @@ namespace Lol.Matchloader.Console
                             break;
                     }
                     zip.BeginUpdate();
-                    foreach (var f in Directory.GetFiles(Path.Combine("..", "..", "Match", region), "*.json"))
+                    foreach (var f in Directory.GetFiles(target_Path, "*.json"))
                         zip.Add(f, Path.GetFileName(f));
                     zip.CommitUpdate();
                 }
                 var wc = new WebClient();
                 wc.Encoding = Encoding.UTF8;
-                foreach (var f in Directory.GetFiles(Path.Combine("..", "..", "Match", region), "*.json"))
+                foreach (var f in Directory.GetFiles(target_Path, "*.json"))
                     System.IO.File.Delete(f);
 
                 int written = 1;
@@ -74,7 +79,7 @@ namespace Lol.Matchloader.Console
 
                         //Thread.Sleep(1300);
                         var json = wc.DownloadString(string.Format("https://{1}.api.pvp.net/api/lol/{1}/v2.2/match/{2}?includeTimeline=true&api_key={0}", apiKey, region, list[i]));
-                        path = Path.Combine("..", "..", "Match", region, list[i] + ".json");
+                        path = Path.Combine(target_Path, list[i] + ".json");
                         using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                             sw.Write(json);
                         System.Console.Clear();
@@ -96,11 +101,11 @@ namespace Lol.Matchloader.Console
                 using (zf)
                 {
                     zf.BeginUpdate();
-                    foreach (var f in Directory.GetFiles(Path.Combine("..", "..", "Match", region), "*.json"))
+                    foreach (var f in Directory.GetFiles(target_Path, "*.json"))
                         zf.Add(f, Path.GetFileName(f));
                     zf.CommitUpdate();
                 }
-                foreach (var f in Directory.GetFiles(Path.Combine("..", "..", "Match", region), "*.json"))
+                foreach (var f in Directory.GetFiles(target_Path, "*.json"))
                     System.IO.File.Delete(f);
             }
             catch (Exception ex)

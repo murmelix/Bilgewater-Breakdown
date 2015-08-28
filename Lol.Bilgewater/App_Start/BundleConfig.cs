@@ -24,7 +24,7 @@ namespace Lol.Bilgewater
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
-                      "~/Scripts/doT.js",
+                      "~/Scripts/chart.js",
                       "~/Scripts/site.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

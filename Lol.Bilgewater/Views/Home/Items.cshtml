@@ -1,0 +1,90 @@
+﻿@model Lol.Bilgewater.Models.ViewModel
+@{
+    ViewBag.Title = "Items";
+}
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Items</h3>
+            </div>
+            <div class="panel-body">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom:10px;">
+                        <span id="itemChartSelection">Top Winrate</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="ctrl.SelectItemChart('TopWinrate', 'Top Winrate')">Top Winrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestWinrate', 'Lowest Winrate')">Lowest Winrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('TopPickrate', 'Top Pickrate')">Top Pickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestPickrate', 'Lowest Pickrate')">Lowest Pickrate</a></li>
+                    </ul>
+                </div>
+                <canvas id="itemChart" height="200" width="600"></canvas>
+                <div style="float:right;" id="itemLegend"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="min-height: 995px; ">
+    <div class="col-xs-12">
+        <div class="well" style="height:auto">
+            @foreach (var x in Lol.Bilgewater.Models.ViewModel.ItemsFiltered.Values.Where(x => x.Depth ==3  &&( x.Maps == null || x.Maps.Any(y => y.Key == "11" && y.Value) || !x.Maps.Any(y => y.Key == "11" && !y.Value))))
+            {
+                <div class="champicon-portrait">
+                    <a href="#" onclick="ctrl.ShowItemDetails(@(x.Id))" data-toggle="modal" data-target="#dialog">
+                        <img class="champiconicon img-rounded" src="../Image/Item/@(x.Id)" title="@(x.Name)"></img>
+                    </a>
+                </div>
+
+            }
+            <div style="clear:left;" />
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="dialogTitle">Modal title</h4>
+            </div>
+            <div class="modal-body itemdialog" id="dialogBody">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4"><span class="label label-default">Bilegewater</span></div>
+                        <div class="col-xs-4"><span class="label label-default">Ranked</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Winrate</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="wrBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="wrRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Pickrate</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="pickBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="pickRanked">5%</span></div>
+                    </div>
+                </div>
+                <div class="well" id="itemDesc">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        var ctrl = new BilgewaterControl();
+        ctrl.Init('Items');
+    </script>
+}

@@ -69,12 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bilgewater\CharMerit.cs" />
     <Compile Include="Bilgewater\MercStatistcs.cs" />
     <Compile Include="Bilgewater\MercTeam.cs" />
     <Compile Include="Bilgewater\MercData.cs" />
     <Compile Include="Bilgewater\Participant.cs" />
     <Compile Include="Bilgewater\Samples\ChampionStat.cs" />
     <Compile Include="Bilgewater\Samples\DurationStats.cs" />
+    <Compile Include="Bilgewater\Samples\ItemStats.cs" />
     <Compile Include="Bilgewater\Samples\MercStats.cs" />
     <Compile Include="Static\Block.cs" />
     <Compile Include="Static\Champion\Champion.cs" />

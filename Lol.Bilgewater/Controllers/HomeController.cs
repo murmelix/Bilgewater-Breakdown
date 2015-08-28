@@ -21,54 +21,28 @@ namespace Lol.Bilgewater.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string Region)
         {
-            var bwitems = ViewModel.Items.Where(x => x.Value.Tags != null && x.Value.Tags.Contains("Bilgewater")).Select(x => new { Id = x.Value.Id, Name = x.Value.Name }).ToList();
-            string bw = JsonConvert.SerializeObject(bwitems);
+            if(Region != null)
+            {
+                ViewModel.FromSession.Region = Region;
+            }
+            else
+            {
+                ViewModel.FromSession.Region = "all";            
+            }
             ViewBag.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
             return View(ViewModel.FromSession);
         }
 
-        private void FetchAllMatches(string region)
+        public ActionResult Champions()
         {
-            string listdata;
-            using (var sr = new StreamReader(Path.Combine(Server.MapPath("~/Content"), "BILGEWATER", region+".json"), Encoding.UTF8))
-            {
-                listdata = sr.ReadToEnd();
-            }
-            string path = Path.Combine(Server.MapPath("~/Content"), region, "matches.zip");
-            var zip = new ZipFile(path);
-            var list = JsonConvert.DeserializeObject<List<string>>(listdata);
-            var wc = new WebClient();
-            wc.Encoding = Encoding.UTF8;
-            using (zip)
-            {
-                zip.BeginUpdate();
-                for (var i = 0; i < list.Count; )
-                {
-                    try
-                    {
-                        if (zip.FindEntry(list[i] + ".json", true) >= 0)
-                        {
-                            i++;
-                            continue;
-                        }
-                        Thread.Sleep(1300);
-                        var json = wc.DownloadString(string.Format("https://euw.api.pvp.net/api/lol/{1}/v2.2/match/{2}?includeTimeline=true&api_key={0}", WebConfigurationManager.AppSettings["ApiKey"], region, list[i]));
-                        path = Path.Combine(Server.MapPath("~/Content"), region, list[i] + ".json");
-                        using (var sw = new StreamWriter(path, false, Encoding.UTF8))
-                            sw.Write(json);
-                        zip.Add(path, list[i] + ".json");
-                        System.IO.File.Delete(path);
-                        i++;
-                    }
-                    catch
-                    {
-                        continue;
-                    }
-                }
-                zip.CommitUpdate();
-            }
+            return View(ViewModel.FromSession);
+        }
+
+        public ActionResult Items()
+        {
+            return View(ViewModel.FromSession);
         }
 
         public ActionResult About()

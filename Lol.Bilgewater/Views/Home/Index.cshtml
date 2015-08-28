@@ -3,155 +3,49 @@
     ViewBag.Title = "Home Page";
 }
 <br />
-<div class="row">
-    <div class="col-xs-3">
-        <div class="bs-component">
-            <div class="list-group" id="champ-list">
-                <a href="javascript:void(0)" class="list-group-item">
-                    <input id="champFilter" name="champFilter" type="text" class="form-control" placeholder="Search" />
-                </a>
-                @foreach (var x in Lol.Bilgewater.Models.ViewModel.Champions.Values.OrderBy(x => x.Name))
-                {
-                    <a rel="@(x.Name.ToLower())" href="javascript:void(0)" class="list-group-item champ @(x.Key == Model.CurrentChampion ? "active": "")">
-                        <span class="badge">@x.CustomCount</span>
-                        <img class="champiconicon img-rounded" src="../Image/Champion/@(x.Key)" title="@(x.Name)"></img>
-                        @x.Name
-                    </a>
-                }
+<div class="row" style="min-height: 995px; ">
+    <div class="col-xs-6">        
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Merc Popularity</h3>
+            </div>
+            <div class="panel-body chart">
+                <canvas id="mercPopularity" height="200"></canvas>
+                <div id="mercLegend"></div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Duration Stats</h3>
+            </div>
+            <div class="panel-body chart">
+                <canvas id="durationStats" height="200"></canvas>
+                <div id="durationLegend"></div>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Role Stats</h3>
+            </div>
+            <div class="panel-body chart">
+                <canvas id="roleStats" height="200"></canvas>
+                <div id="roleLegend"></div>
             </div>
         </div>
     </div>
-    <div class="col-xs-8">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="btn-group btn-group-justified" id="map-group">
-                    <a rel="SR" class="btn btn-default @("SR" == Model.CurrentMap ? "active": "")" href="javascript:ctrl.SelectMap('SR')">Summoner's Rift <span class="badge">0</span></a>
-                    <a rel="TT" class="btn btn-default @("TT" == Model.CurrentMap ? "active": "")" href="javascript:ctrl.SelectMap('TT')">Twisted Treeline <span class="badge">0</span></a>
-                    <a rel="HA" class="btn btn-default @("HA" == Model.CurrentMap ? "active": "")" href="javascript:ctrl.SelectMap('HA')">Howling Abyss <span class="badge">0</span></a>
-                    <a rel="CS" class="btn btn-default @("CS" == Model.CurrentMap ? "active": "")" href="javascript:ctrl.SelectMap('CS')">Crystal Scar <span class="badge">0</span></a>
-                    <a rel="ANY" class="btn btn-default @("ANY" == Model.CurrentMap ? "active": "")" href="javascript:ctrl.SelectMap('ANY')">All <span class="badge">0</span></a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-2">
-                <div class="dropdown disabled">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="width: 125px;">
-                        Select
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" id="item-set-select">
-                        <li><a href="#" class="select-itemset" name="recommanded">Recommanded</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" class="new-itemset">Create new</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3">
-                <input id="itemsetName" type="text" style="width: 190px;" disabled="disabled" class="form-control itemset-controls" />
-            </div>
-            <div class="col-xs-4">
-                <div class="btn-group btn-group-justified ">
-                    <a href="#" class="btn btn-warning itemset-controls disabled">Rename</a>
-                    <a href="#" class="btn btn-success itemset-controls disabled">Clone</a>
-                    <a href="#" class="btn btn-danger itemset-controls disabled" >Delete</a>
-                </div>
-            </div>
-            <div class="col-xs-2">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="panel panel-primary hide">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Items</h3>
-                    </div>
-                    <div class="panel-bod">
-                        <table class="table table-condensed">
-                            <thead>
-                                <tr>
-                                    <th>Tier</th>
-                                    <th>Attack</th>
-                                    <th>Magic</th>
-                                    <th>Defense</th>
-                                    <th>Misc</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input type="checkbox" value="tier1" /><label class="label">Basic</label></td>
-                                    <td><input type="checkbox" value="ad" /><label class="label">Damage</label></td>
-                                    <td><input type="checkbox" value="ap" /><label class="label">Ability Power</label></td>
-                                    <td><input type="checkbox" value="health" /><label class="label">Health</label></td>
-                                    <td><input type="checkbox" value="ms" /><label class="label">Movement</label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" value="tier2" /><label class="label">Advanced</label></td>
-                                    <td><input type="checkbox" value="as" /><label class="label">Attack Speed</label></td>
-                                    <td><input type="checkbox" value="cdr" /><label class="label">Cooldown Reduction</label></td>
-                                    <td><input type="checkbox" value="armor" /><label class="label">Armor</label></td>
-                                    <td><input type="checkbox" value="consumable" /><label class="label">Consumable</label></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" value="tier3" /><label class="label">Legendary</label></td>
-                                    <td><input type="checkbox" value="ls" /><label class="label">Life Steal</label></td>
-                                    <td><input type="checkbox" value="mana" /><label class="label">Mana</label></td>
-                                    <td><input type="checkbox" value="mr" /><label class="label">Magic Resist</label></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td><input type="checkbox" value="crit" /><label class="label">Critical Strike</label></td>
-                                    <td><input type="checkbox" value="manareg" /><label class="label">Mana Regen</label></td>
-                                    <td><input type="checkbox" value="healthReg" /><label class="label">Health Regen</label></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="well">
-                    @foreach (var x in Lol.Bilgewater.Models.ViewModel.Items.Values)
-                    {
-                        if (!x.HideFromAll)
-                        {
-                            <img data-toggle="popover" class="itemicon2 img-rounded" src="../Image/Item/@(x.Id)" data-content="@(x.SanitizedDescription)" title="@(x.Name)"></img>
-                        }
-                    }
-                    <div style="clear:left;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div id="templateContainer" class="col-xs-12">
+    <div class="col-xs-6">
+        <div id="mercs" class="well" style="float: right;display:none;">
 
-            </div>
         </div>
     </div>
 </div>
 
 @section scripts
 {
-    <script type="text/javascript">
-        var ctrl = new ItemsetControl();
+    <script type="text/javascript">       
+        var ctrl = new BilgewaterControl();
         $(function () {
-            ctrl.Init();
+            ctrl.Init('Mercs');
         });
-    </script>
-    <script id="ItemsetTemplate" type="text/template">
-        <? for(var i=0;i<it.Blocks.length;i++){?>
-            <div class="panel panel-default">
-                <div class="panel-heading"><?=it.Blocks[i].Type?></div>
-                <div class="panel-body">
-                    <? for(var j=0;j<it.Blocks[i].Items.length;j++){?>                                        
-                         <img class="itemicon3 img-rounded" src="../Image/Item/<?=it.Blocks[i].Items[j].Id?>"></img>
-                    <?}?>
-                </div>
-            </div>
-        <?}?>
     </script>
 }

@@ -17,6 +17,9 @@ namespace Lol.Bilgewater.Melter
 {
     class Program
     {
+        static string data_path = null;
+        static string sample_path = null;
+        static string currentSource = "RANKED_SOLO";
         public static Dictionary<string, Dictionary<long, MercStatistcs>> match_data = new Dictionary<string, Dictionary<long, MercStatistcs>>();
         public static MetaInformations meta_data = null;
 
@@ -29,7 +32,7 @@ namespace Lol.Bilgewater.Melter
                 if (_champs == null)
                 {
                     _champs = new Dictionary<string, Champion>();
-                    var adapter = new StaticJsonAdapter(@"..\..\Metadata");
+                    var adapter = new StaticJsonAdapter(Path.Combine(data_path, "metadata"));
                     var result = adapter.ListChampions("euw", "en_US", "b409f8d7-bf70-47b3-961c-ab53419e20ff");
                     _champs = result.Data;
                 }
@@ -39,7 +42,10 @@ namespace Lol.Bilgewater.Melter
 
         static void Main(string[] args)
         {
+            data_path = System.Configuration.ConfigurationSettings.AppSettings["DataPath"];
+            sample_path = Path.Combine(data_path, currentSource, "Samples");
             ReadMetaData();
+            //RefineMatchData();
             CreateSamples();
             System.Console.ReadLine();
         }
@@ -47,7 +53,7 @@ namespace Lol.Bilgewater.Melter
         public static void ReadMetaData()
         {
             var xser = new XmlSerializer(typeof(MetaInformations));
-            using (var sr = new StreamReader("mercs.xml"))
+            using (var sr = new StreamReader(Path.Combine(data_path, "metadata", "mercs.xml")))
             {
                 meta_data = (MetaInformations)xser.Deserialize(sr);
             }
@@ -55,18 +61,110 @@ namespace Lol.Bilgewater.Melter
 
         public static void CreateSamples()
         {
-            foreach (var folder in Directory.GetDirectories(@"..\..\Bilgewater"))
+            foreach (var file in Directory.GetFiles(Path.Combine(data_path, currentSource, "Refined")))
             {
-                var dir = Path.GetFileName(folder);
-                string protopath = Path.Combine(folder, dir + "_matches.proto");
+                string protopath = file;
+                var region = Path.GetFileName(file).Split('_')[0];
                 if (!File.Exists(protopath))
                     continue;
                 using (var s = new FileStream(protopath, FileMode.Open))
-                    match_data.Add(dir, ProtoBuf.Serializer.Deserialize<Dictionary<long, MercStatistcs>>(s));
+                    match_data.Add(region, ProtoBuf.Serializer.Deserialize<Dictionary<long, MercStatistcs>>(s));
             }
             //SampleMercStats();
+            SampleItemStats();
             //SampleDurationStats();
-            SampleChampionStats();
+            //SampleChampionStats();
+        }
+
+        private static void SampleItemStats()
+        {
+            Dictionary<string, Dictionary<int, ItemStats>> stats = new Dictionary<string, Dictionary<int, ItemStats>>();
+            var all = new Dictionary<int, ItemStats>();
+            int allcount = 0;
+            stats.Add("all", all);
+
+            foreach (var key in match_data.Keys)
+            {
+                allcount += match_data[key].Count;
+                var current = new Dictionary<int, ItemStats>();
+                stats.Add(key, current);
+                foreach (var match in match_data[key].Values)
+                {
+                    List<MercTeam> teams = new List<MercTeam>();
+                    teams.Add(match.TeamBlue);
+                    teams.Add(match.TeamRed);
+                    foreach (var team in teams)
+                    {
+                        foreach (var part in team.Participants)
+                        {
+                            Count((int)part.Item0, current, team.Winner);
+                            Count((int)part.Item1, current, team.Winner);
+                            Count((int)part.Item2, current, team.Winner);
+                            Count((int)part.Item3, current, team.Winner);
+                            Count((int)part.Item4, current, team.Winner);
+                            Count((int)part.Item5, current, team.Winner);
+                            Count((int)part.Item6, current, team.Winner);
+                        }
+                    }
+                }
+            }
+
+            foreach (var key in stats.Keys)
+            {
+                foreach (var item in stats[key].Keys)
+                {
+                    if (!all.ContainsKey(item))
+                    {
+                        all.Add(item, new ItemStats
+                        {
+                            Id = stats[key][item].Id,
+                            IsBiglewater = stats[key][item].IsBiglewater,
+                            Pickcount = stats[key][item].Pickcount,
+                            Wincount = stats[key][item].Wincount,
+                        });
+                    }
+                    else
+                    {
+                        all[item].Pickcount += stats[key][item].Pickcount;
+                        all[item].Wincount += stats[key][item].Wincount;
+                    }
+                }
+            }
+
+            foreach (var key in stats.Keys)
+            {
+                foreach (var item in stats[key])
+                {
+                    if (key != "all")
+                    {
+                        item.Value.Winrate = (float)item.Value.Wincount / item.Value.Pickcount;
+                        item.Value.Pickrate = (float)item.Value.Pickcount / match_data[key].Count * 10;
+                    }
+                    else
+                    {
+                        item.Value.Winrate = (float)item.Value.Wincount / item.Value.Pickcount;
+                        item.Value.Pickrate = (float)item.Value.Pickcount / allcount * 10;
+                    }
+                }
+            }
+            
+            foreach (var key in stats.Keys)
+            {
+                string path = Path.Combine(sample_path, key, "Items.proto");
+                if (!Directory.Exists(Path.Combine(sample_path, key))) Directory.CreateDirectory(Path.Combine(sample_path, key));
+                using (var s = new FileStream(path, FileMode.Create))
+                    ProtoBuf.Serializer.Serialize<Dictionary<int, ItemStats>>(s, stats[key]);
+            }
+        }
+
+        private static void Count(int item, Dictionary<int, ItemStats> current, bool win)
+        {
+            if (!current.ContainsKey(item))
+                current.Add(item, new ItemStats { Id=item });
+            current[item].IsBiglewater = meta_data.Item.Contains((int)item);
+            current[item].Pickcount++;
+            if (win)
+                current[item].Wincount++;
         }
 
         private static void SampleChampionStats()
@@ -224,10 +322,26 @@ namespace Lol.Bilgewater.Melter
             float allPick = stats["all"].Sum(x => x.Value.Pickrate);
             float allWin = stats["all"].Sum(x => x.Value.Winrate);
 
+            foreach (var key in stats.Keys)
+            {
+                string path = Path.Combine(sample_path, key, "Champion.proto");
+                if (!Directory.Exists(Path.Combine(sample_path, key))) Directory.CreateDirectory(Path.Combine(sample_path, key));
+                using (var s = new FileStream(path, FileMode.Create))
+                    ProtoBuf.Serializer.Serialize<Dictionary<int, ChampionStat>>(s, stats[key]);
+            }
+
             var rolepicks = rolestats["all"].Select(x => new { Role = x.Value.Role, Pick = x.Value.Pickrate }).OrderBy(x => x.Pick).ToList();
             var rolewins = rolestats["all"].Select(x => new { Role = x.Value.Role, Win = x.Value.Winrate }).OrderBy(x => x.Win).ToList();
             float roleallPick = rolestats["all"].Sum(x => x.Value.Pickrate);
             float roleallWin = rolestats["all"].Sum(x => x.Value.Winrate);
+
+            foreach (var key in rolestats.Keys)
+            {
+                string path = Path.Combine(sample_path, key, "Role.proto");
+                if (!Directory.Exists(Path.Combine(sample_path, key))) Directory.CreateDirectory(Path.Combine(sample_path, key));
+                using (var s = new FileStream(path, FileMode.Create))
+                    ProtoBuf.Serializer.Serialize<Dictionary<string, ChampionStat>>(s, rolestats[key]);
+            }
         }
 
         private static void SampleDurationStats()
@@ -293,7 +407,14 @@ namespace Lol.Bilgewater.Melter
                     dur.AvgFirstBaron = (float)dur.FirstBaron / dur.BaronKilledMatchCount;
                     dur.AvgFirstInhib = (float)dur.FirstInhib / allcount;
                     dur.AvgFirstTower = (float)dur.FirstTower / allcount;
-                }                
+                }
+            }
+            foreach (var key in stats.Keys)
+            {
+                string path = Path.Combine(sample_path, key, "Duration.proto");
+                if (!Directory.Exists(Path.Combine(sample_path, key))) Directory.CreateDirectory(Path.Combine(sample_path, key));
+                using (var s = new FileStream(path, FileMode.Create))
+                    ProtoBuf.Serializer.Serialize<DurationStats>(s, stats[key]);
             }
         }
 
@@ -365,15 +486,24 @@ namespace Lol.Bilgewater.Melter
             }
             float allPick = stats["all"].Sum(x => x.Value.Pickrate);
             float allWin = stats["all"].Sum(x => x.Value.Winrate);
+
+            foreach (var key in stats.Keys)
+            {
+                string path = Path.Combine(sample_path, key, "Merc.proto");
+                if (!Directory.Exists(Path.Combine(sample_path, key))) Directory.CreateDirectory(Path.Combine(sample_path, key));
+                using (var s = new FileStream(path, FileMode.Create))
+                    ProtoBuf.Serializer.Serialize<Dictionary<int, MercStats>>(s, stats[key]);
+            }
         }
 
-        public static void ReadMatchData()
+        public static void RefineMatchData()
         {
-            foreach (var folder in Directory.GetDirectories(@"..\..\Bilgewater"))
+            string refinedPath = Path.Combine(data_path, currentSource, "Refined");
+            foreach (var folder in Directory.GetDirectories(Path.Combine(data_path, currentSource, "Raw")))
             {
                 var dir = Path.GetFileName(folder);
                 string zippath = Path.Combine(folder, dir + "_matches.zip");
-                string protopath = Path.Combine(folder, dir + "_matches.proto");
+                string protopath = Path.Combine(refinedPath, dir + "_matches.proto");
                 if (File.Exists(protopath))
                     continue;
                 if (!File.Exists(zippath))

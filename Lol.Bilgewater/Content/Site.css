@@ -1,6 +1,10 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+     background-image: url(/Image/Bilgewater/act-1-world-layer-base.jpg);
+     background-repeat:no-repeat;
+     display: compact;
+     background-size: 100%;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,9 +29,40 @@ textarea {
     height:18px;
 }
 
-.champiconicon {
-    width: 32px;
-    height:32px;
+#dialogBody {
+    width:600px;
+    height:375px;
+     background-size: 600px 375px;
+}
+
+.itemdialog {    
+     background-image: url(/Image/Bilgewater/act-2-world-layer-base.jpg);
+}
+
+#dialogBody .well {
+    background:rgba(28,30,32,0.5);
+    width:300px;
+}
+
+#itemDesc {
+    width:550px !important;font-size:x-small;
+}
+
+
+.champicon-portrait {
+    float:left;
+    margin:2px;
+    height: 95px;
+    width: 75px;    
+}
+
+.champicon-portrait span{
+    align-content:center;
+}
+
+.champicon-portrait img{
+    height: 75px;
+    width: 75px;    
 }
 
 .itemicon {
@@ -77,4 +112,29 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+.merc-description {
+    margin:2px;
+}
+
+.merc-description .desc {
+    float:right;
+    padding:3px;
+}
+
+.chart canvas{
+    width:50%;
+}
+
+.chart canvas, .chart div {
+    float:left;
+}
+
+.chart div {
+    width:40%;
+}
+
+.chart div table {
+    width:100%;
 }

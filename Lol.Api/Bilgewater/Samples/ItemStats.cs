@@ -9,7 +9,7 @@ namespace Lol.Api.Bilgewater.Samples
 {
     [ProtoBuf.ProtoContract]
     [DataContract]
-    public class MercStats
+    public class ItemStats
     {
         [ProtoBuf.ProtoMember(1)]
         [DataMember]
@@ -22,5 +22,7 @@ namespace Lol.Api.Bilgewater.Samples
         [ProtoBuf.ProtoMember(3)]
         [DataMember]
         public float Winrate { get; set; }
+        [DataMember]
+        public bool IsBiglewater { get; set; }
     }
 }

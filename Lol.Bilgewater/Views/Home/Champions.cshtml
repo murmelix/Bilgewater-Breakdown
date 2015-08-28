@@ -1,0 +1,108 @@
+﻿@model Lol.Bilgewater.Models.ViewModel
+@{
+    ViewBag.Title = "Champions";
+}
+<br />
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Champions</h3>
+            </div>            
+            <div class="panel-body">
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom:10px;">
+                        <span id="championChartSelection">Top Winrate</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopWinrate', 'Top Winrate')">Top Winrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestWinrate', 'Lowest Winrate')">Lowest Winrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopPickrate', 'Top Pickrate')">Top Pickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestPickrate', 'Lowest Pickrate')">Lowest Pickrate</a></li>
+                    </ul>
+                </div>
+                <canvas id="championChart" height="200" width="600"></canvas>
+                <div style="float:right;" id="championLegend"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="min-height: 995px; ">
+    <div class="col-xs-12">
+        <div class="well" style="height:auto">
+            @foreach (var x in Lol.Bilgewater.Models.ViewModel.Champions.Values.OrderBy(x => x.Name))
+            {
+                <div class="champicon-portrait">
+                    <a href="#" onclick="ctrl.ShowChampDetails(@(x.Id),'@(x.Key)')" data-toggle="modal" data-target="#dialog">
+                        <img class="champiconicon img-rounded" src="../Image/Champion/@(x.Key)" title="@(x.Name)"></img>
+                        <span class="label label-default">@(x.Name)</span>
+                    </a>
+            </div>
+
+            }
+            <div style="clear:left;"/>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="dialogTitle">Modal title</h4>
+            </div>
+            <div class="modal-body" id="dialogBody">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-4"></div>
+                        <div class="col-xs-4"><span class="label label-default">Bilegewater</span></div>
+                        <div class="col-xs-4"><span class="label label-default">Ranked</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Winrate</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="wrBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="wrRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Pickrate</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="pickBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="pickRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Kills</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="killsBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="killsRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Death</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="deathBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="deahtRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">Assists</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="assistsBilgewater">10%</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="assistsRanked">5%</span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4"><span class="label label-default">CS</span></div>
+                        <div class="col-xs-4"><span class="label label-success" id="csBilgewater">200</span></div>
+                        <div class="col-xs-4"><span class="label label-danger" id="csRanked">100</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        var ctrl = new BilgewaterControl();  
+        ctrl.Init('Champions');     
+    </script>
+}

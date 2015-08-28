@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoL Itemset-Builder</title>    
+    <title>LoL Bilgewater-Breakdown</title>    
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,15 +18,30 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("LoL Itemset-Builder", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink("LoL Bilgewater-Breakdown", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Startseite", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Info", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Region@(Model.Region != "all" ? " [" + Model.Region.ToUpper() + "]" : "") <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "all" })">All</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "br" })">BR</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "eune" })">EUNE</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "euw" })">EUW</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "kr" })">KR</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "lan" })">LAN</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "las" })">LAS</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "na" })">NA</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "oce" })">OCE</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "ru" })">RU</a></li>
+                            <li><a href="@Url.Action("Index", "Home", new { Region = "tr" })">TR</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Items", "Items", "Home")</li>
+                    <li>@Html.ActionLink("Champions", "Champions", "Home")</li>
+                    <li>@Html.ActionLink("Dokumentation", "About", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
