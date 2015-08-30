@@ -15,11 +15,14 @@ namespace Lol.Bilgewater.Controllers
         public ActionResult Item(string id)
         {
             var dir = Server.MapPath("/Image/Item");
+            // ensure directory
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
+            // combine target path
             var path = Path.Combine(dir, id+".png");
             try
             {
+                // if not exists locally download from riot api
                 if (!System.IO.File.Exists(path))
                 {
                     var wc = new WebClient();
@@ -40,11 +43,14 @@ namespace Lol.Bilgewater.Controllers
         public ActionResult Champion(string id)
         {
             var dir = Server.MapPath("/Image/Champion");
+            // ensure directory
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
+            // combine target path
             var path = Path.Combine(dir, id + ".png");
             try
             {
+                // if not exists locally download from riot api
                 if (!System.IO.File.Exists(path))
                 {
                     var wc = new WebClient();
@@ -65,11 +71,14 @@ namespace Lol.Bilgewater.Controllers
         public ActionResult Splash(string id)
         {
             var dir = Server.MapPath("/Image/Splash");
+            // ensure directory
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
+            // combine target path
             var path = Path.Combine(dir, id + ".png");
             try
             {
+                // if not exists locally download from riot api
                 if (!System.IO.File.Exists(path))
                 {
                     var wc = new WebClient();

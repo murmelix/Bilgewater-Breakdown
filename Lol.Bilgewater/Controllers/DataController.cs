@@ -27,12 +27,13 @@ namespace Lol.Bilgewater.Controllers
 #endif
             }
         }
-
+        // local cache for champions stats from bilgewater
         public Dictionary<int, ChampionStat> ChampionsBilgewater
         {
             get
             {
                 string region = ViewModel.FromSession.Region;
+                // load from proto if not present
                 var protopath_bilge = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Champion.proto");
                 using (var s = new FileStream(protopath_bilge, FileMode.Open))
                 {
@@ -41,11 +42,13 @@ namespace Lol.Bilgewater.Controllers
             }
         }
 
+        // local cache for champions stats from solo_ranked
         public Dictionary<int, ChampionStat> ChampionsRanked
         {
             get
             {
                 string region = ViewModel.FromSession.Region;
+                // load from proto if not present
                 var protopath_bilge = Path.Combine(DataPath, "RANKED_SOLO", "Samples", region, "Champion.proto");
                 using (var s = new FileStream(protopath_bilge, FileMode.Open))
                 {
@@ -54,11 +57,13 @@ namespace Lol.Bilgewater.Controllers
             }
         }
 
+        // local cache for item stats from bilgewater
         public Dictionary<int, ItemStats> ItemsBilgewater
         {
             get
             {
                 string region = ViewModel.FromSession.Region;
+                // load from proto if not present
                 var protopath_bilge = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Items.proto");
                 using (var s = new FileStream(protopath_bilge, FileMode.Open))
                 {
@@ -67,11 +72,13 @@ namespace Lol.Bilgewater.Controllers
             }
         }
 
+        // local cache for item stats from solo_ranked
         public Dictionary<int, ItemStats> ItemsRanked
         {
             get
             {
                 string region = ViewModel.FromSession.Region;
+                // load from proto if not present
                 var protopath_bilge = Path.Combine(DataPath, "RANKED_SOLO", "Samples", region, "Items.proto");
                 using (var s = new FileStream(protopath_bilge, FileMode.Open))
                 {
@@ -83,17 +90,21 @@ namespace Lol.Bilgewater.Controllers
         public ActionResult Mercs()
         {
             string region = ViewModel.FromSession.Region;
+            // get merc samples for selected region
             var protopath = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Merc.proto");
             using (var s = new FileStream(protopath, FileMode.Open))
             {
                 var data = ProtoBuf.Serializer.Deserialize<Dictionary<int, MercStats>>(s);
+                // load infos for description panel
                 var infos = ViewModel.Items.Where(x => data.Keys.Contains(x.Value.Id)).Select(x => x.Value).ToList();
-                data[-1].Id = 3070;//träne
+                // add the tear id for fluff
+                data[-1].Id = 3070;
                 return new JsonResult
                 {
                     JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                     Data = new
                     {
+                        // stats order by pickrate
                         Stats = data.Values.OrderBy(x => x.Pickrate).ToList(),
                         Infos = infos
                     }
@@ -103,6 +114,7 @@ namespace Lol.Bilgewater.Controllers
 
         public ActionResult Role()
         {
+            // load role stats from both sources
             string region = ViewModel.FromSession.Region;
             var protopath_bilge = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Role.proto");
             var protopath_ranked = Path.Combine(DataPath, "RANKED_SOLO", "Samples", region, "Role.proto");
@@ -118,6 +130,7 @@ namespace Lol.Bilgewater.Controllers
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                // return combined result
                 Data = new
                 {
                     Bilgewater = bilgewater,
@@ -128,14 +141,18 @@ namespace Lol.Bilgewater.Controllers
         [NoCache]
         public ActionResult Champion(string id)
         {
+            // load details for champion popup
             var champ = ViewModel.Champions[id];
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    // basic description key/name/title
                     Description = champ,
+                    // stats from bilgewater
                     Bilgewater = ChampionsBilgewater[int.Parse(champ.Id)],
+                    // stats from ranked solo
                     Ranked = ChampionsRanked[int.Parse(champ.Id)]
                 }
             };
@@ -143,6 +160,7 @@ namespace Lol.Bilgewater.Controllers
         [NoCache]
         public ActionResult Item(string id)
         {
+            // load data for item popup
             string region = ViewModel.FromSession.Region;
             var protopath_bilge = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Items.proto");
             var protopath_ranked = Path.Combine(DataPath, "RANKED_SOLO", "Samples", region, "Items.proto");
@@ -161,8 +179,11 @@ namespace Lol.Bilgewater.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    // basic description key/name/title/desription
                     Description = item,
+                    // stats from bilgewater
                     Bilgewater = bilgewater.ContainsKey(int.Parse(id)) ? bilgewater[int.Parse(id)] : null,
+                    // stats from ranked solo
                     Ranked = ranked.ContainsKey(int.Parse(id)) ? ranked[int.Parse(id)] : null
                 }
             };
@@ -170,6 +191,7 @@ namespace Lol.Bilgewater.Controllers
 
         public ActionResult Duration()
         {
+            // load duration sample data
             string region = ViewModel.FromSession.Region;
             var protopath_bilge = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Duration.proto");
             var protopath_ranked = Path.Combine(DataPath, "RANKED_SOLO", "Samples", region, "Duration.proto");
@@ -187,7 +209,9 @@ namespace Lol.Bilgewater.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    // stats from bilgewater
                     Bilgewater = bilgewater,
+                    // stats from ranked solo
                     Ranked = ranked
                 }
             };
@@ -195,6 +219,7 @@ namespace Lol.Bilgewater.Controllers
 
         public ActionResult ItemChart(string id, bool onlyBilgewater)
         {
+            // load data for item chart switch by selection
             switch (id)
             {
                 case "LowestWinrate":
@@ -229,6 +254,7 @@ namespace Lol.Bilgewater.Controllers
 
         private bool IsBiglewater(ItemStats x)
         {
+            // helper for filetering items after bilgewater
             return ViewModel.ItemsFiltered[x.Id.ToString()].IsBilgewater;
         }
 
@@ -241,7 +267,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.Items[x.Id.ToString()].Name,
                 ValueBilgewater = x.Pickrate,
                 ValueRanked = SafePickrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id))
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -258,9 +284,9 @@ namespace Lol.Bilgewater.Controllers
             {
                 Id = ViewModel.Items[x.Id.ToString()].Id,
                 Name = ViewModel.Items[x.Id.ToString()].Name,
-                ValueBilgewater = x.Winrate * 100,
-                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100
-            }).Take(10).ToList();
+                ValueBilgewater = x.Winrate * 100,// make winrate from 0.50 to 50
+                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100// make winrate from 0.50 to 50
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -278,9 +304,9 @@ namespace Lol.Bilgewater.Controllers
             {
                 Id = ViewModel.Items[x.Id.ToString()].Id,
                 Name = ViewModel.Items[x.Id.ToString()].Name,
-                ValueBilgewater = x.Winrate * 100,
-                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100
-            }).Take(10).ToList();
+                ValueBilgewater = x.Winrate * 100, // make winrate from 0.50 to 50
+                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100// make winrate from 0.50 to 50
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -290,7 +316,11 @@ namespace Lol.Bilgewater.Controllers
                 }
             };
         }
-
+        /// <summary>
+        /// get winrate if itemsats present 
+        /// </summary>
+        /// <param name="itemStats"></param>
+        /// <returns></returns>
         private float SafeWinrate(ItemStats itemStats)
         {
             if (itemStats == null)
@@ -298,7 +328,11 @@ namespace Lol.Bilgewater.Controllers
             else
                 return itemStats.Winrate;
         }
-
+        /// <summary>
+        /// get pickrate if itemsats present 
+        /// </summary>
+        /// <param name="itemStats"></param>
+        /// <returns></returns>
         private float SafePickrate(ItemStats itemStats)
         {
             if (itemStats == null)
@@ -309,7 +343,8 @@ namespace Lol.Bilgewater.Controllers
 
 
         public ActionResult ChampionChart(string id)
-        {
+        { 
+            // load champion chart switch by selection
             switch (id)
             {
                 case "TopAvgCS":
@@ -336,7 +371,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.AvgMinionCount + x.AvgJungleCount,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).AvgMinionCount + ranked.Values.First(y => y.Id == x.Id).AvgJungleCount
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -357,7 +392,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.AvgMinionCount + x.AvgJungleCount,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).AvgMinionCount + ranked.Values.First(y => y.Id == x.Id).AvgJungleCount
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -378,7 +413,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.Pickrate,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).Pickrate
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -399,7 +434,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.Pickrate,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).Pickrate
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -420,7 +455,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.Winrate,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -441,7 +476,7 @@ namespace Lol.Bilgewater.Controllers
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.Winrate,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate
-            }).Take(10).ToList();
+            }).Take(10).ToList();// take top 10
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,

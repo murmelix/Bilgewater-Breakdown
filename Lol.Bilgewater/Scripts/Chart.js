@@ -1706,9 +1706,11 @@
 					ctx.stroke();
 					ctx.closePath();
 
-
+                    // extend chart logic
 					var isImage = false;
+                    // ctrl is defined on page and loaded images for chart
 					for (var i = 0; i < ctrl.Images.length; i++) {
+                        // when image found draw the image
 					    if (ctrl.Images[i].id == label) {
 					        isImage = true
 					        ctx.drawImage(ctrl.Images[i], xPos - 21, this.height - 20, 40, 40);
@@ -1716,6 +1718,7 @@
 					}
 
 					ctx.save();
+                    // when no image was found, draw the text
 					if (!isImage) {
 					    ctx.translate(xPos, (isRotated) ? this.endPoint + 12 : this.endPoint + 8);
 					    ctx.rotate(toRadians(this.xLabelRotation) * -1);

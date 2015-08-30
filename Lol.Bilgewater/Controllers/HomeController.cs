@@ -23,6 +23,7 @@ namespace Lol.Bilgewater.Controllers
     {
         public ActionResult Index(string Region)
         {
+            // index only is switch region all for default
             if(Region != null)
             {
                 ViewModel.FromSession.Region = Region;
@@ -32,29 +33,34 @@ namespace Lol.Bilgewater.Controllers
                 ViewModel.FromSession.Region = "all";            
             }
             ViewBag.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
+            // redirects to last view
             return RedirectToAction(ViewModel.FromSession.CurrentView);
         }
 
         public ActionResult Welcome()
         {
+            // save last view
             ViewModel.FromSession.CurrentView = "Welcome";
             return View(ViewModel.FromSession);
         }
 
         public ActionResult Mercs()
         {
+            // save last view
             ViewModel.FromSession.CurrentView = "Mercs";
             return View(ViewModel.FromSession);
         }
 
         public ActionResult Champions()
         {
+            // save last view
             ViewModel.FromSession.CurrentView = "Champions";
             return View(ViewModel.FromSession);
         }
 
         public ActionResult Items(bool? OnlyBilgewater)
         {
+            // save last view
             ViewBag.OnlyBilgewater = OnlyBilgewater ?? false;
             ViewModel.FromSession.CurrentView = "Items";
             return View(ViewModel.FromSession);
@@ -62,15 +68,9 @@ namespace Lol.Bilgewater.Controllers
 
         public ActionResult About()
         {
+            // save last view
             ViewModel.FromSession.CurrentView = "About";
             return View(ViewModel.FromSession);
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

@@ -101,7 +101,7 @@
     <Compile Include="Static\Match\ParticipantTimeline.cs" />
     <Compile Include="Static\Match\ParticipantTimelineData.cs" />
     <Compile Include="Static\Match\Player.cs" />
-    <Compile Include="Static\Match\Position.cs" />
+    <Compile Include="Static\Match\Positions.cs" />
     <Compile Include="Static\Match\Rune.cs" />
     <Compile Include="Static\Match\Team.cs" />
     <Compile Include="Static\Match\Timeline.cs" />

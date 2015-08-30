@@ -3,6 +3,7 @@
 function BilgewaterControl() {
     var _this = this;
     this.Init = function (view, onlyBilgewater) {
+        // one init page for each chart page
         _this.OnlyBilgewater = onlyBilgewater;
         if (view == 'Mercs')
             _this.InitMercs();
@@ -11,38 +12,49 @@ function BilgewaterControl() {
         if (view == 'Items')
             _this.InitItems();
     };
+    // helper method for loading champion icons
     this.LoadChampionImages = function (toLoad) {        
         _this.Images = [];
         var count = 0;
+        // create deferred so chart creation can wait until images are loaded
         var deferred = jQuery.Deferred();
         for (var i = 0; i < toLoad.length; i++) {
             var img = new Image();
             img.id = toLoad[i];
             img.onload = function () {
                 count++;
+                // onload counts loads
+                // resolves deferred when all images are loaded
                 if (count == toLoad.length) {
                     deferred.resolve();                    
                 }
             };
             img.src = '/Image/Champion/' + toLoad[i];
+            // safe image in array
             _this.Images.push(img)
         }
         return deferred;
     };
+
+    // helper method for loading ietem icons
     this.LoadItemImages = function (toLoad) {
         _this.Images = [];
         var count = 0;
+        // create deferred so chart creation can wait until images are loaded
         var deferred = jQuery.Deferred();
         for (var i = 0; i < toLoad.length; i++) {
             var img = new Image();
             img.id = toLoad[i];
             img.onload = function () {
                 count++;
+                // onload counts loads
+                // resolves deferred when all images are loaded
                 if (count == toLoad.length) {
                     deferred.resolve();
                 }
             };
             img.src = '/Image/Item/' + toLoad[i];
+            // safe image in array
             _this.Images.push(img)
         }
         return deferred;
@@ -50,19 +62,24 @@ function BilgewaterControl() {
     this.InitChampions = function () {
         _this.LoadChampionChart('TopWinrate');
     };
+    // method is called from chart selection dropdown
     this.SelectChampionChart = function (id, title) {
         _this.LoadChampionChart(id);
+        // update dropdown selected span
         $('#championChartSelection').text(title);
     };
     this.LoadChampionChart = function(id){
         $.getJSON('/Data/ChampionChart/' + id, function (response) {
+            // destroy previous chart
             if (_this.ChampionChart != null)
                 _this.ChampionChart.destroy();
             var toLoad = [];
+            // select champion images to load
             for (var i = 0; i < response.Champions.length; i++) {
                 toLoad.push(response.Champions[i].Key);
             }
-            $.when(_this.LoadChampionImages(toLoad)).done(function () {
+            // get images and wait for them
+            $.when(_this.LoadChampionImages(toLoad)).done(function () {                
                 var ctx = $('#championChart').get(0).getContext("2d");
                 var data = {
                     labels: [],
@@ -85,9 +102,12 @@ function BilgewaterControl() {
                         }
                     ]
                 };
-                var format = response.Format;
+                // format for y axis legend
+                var format = response.Format;                
+                // fill dataset for  chart
                 for (var i = 0; i < response.Champions.length; i++) {
                     data.labels.push(response.Champions[i].Key);
+                    // format by selected format 
                     if (response.Format == 'Win') {
                         data.datasets[0].data.push(formatWin(response.Champions[i].ValueBilgewater));
                         data.datasets[1].data.push(formatWin(response.Champions[i].ValueRanked));
@@ -107,23 +127,30 @@ function BilgewaterControl() {
                     multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
+                // chart creation
                 _this.ChampionChart = new Chart(ctx).Bar(data, options);
+                // render legend
                 $('#championLegend').html(_this.ChampionChart.generateLegend());
             });
         });
     }
+    // method is called from chart selection dropdown
     this.SelectItemChart = function (id, title) {
         _this.LoadItemChart(id);
+        // update dropdown selected span
         $('#itemChartSelection').text(title);
     };
     this.LoadItemChart = function (id) {
         $.getJSON('/Data/ItemChart/' + id + '?onlyBilgewater=' + _this.OnlyBilgewater, function (response) {
+            // destroy previous chart
             if (_this.ItemChart != null)
                 _this.ItemChart.destroy();
             var toLoad = [];
+            // select champion images to load
             for (var i = 0; i < response.Items.length; i++) {
                 toLoad.push(response.Items[i].Id);
             }
+            // get images and wait for them
             $.when(_this.LoadItemImages(toLoad)).done(function () {
                 var ctx = $('#itemChart').get(0).getContext("2d");
                 var data = {
@@ -147,6 +174,7 @@ function BilgewaterControl() {
                         }
                     ]
                 };
+                // fill dataset for  chart
                 for (var i = 0; i < response.Items.length; i++) {
                     data.labels.push(response.Items[i].Id);
                     data.datasets[0].data.push(formatFloat(response.Items[i].ValueBilgewater));
@@ -158,7 +186,9 @@ function BilgewaterControl() {
                     multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
+                // chart creation
                 _this.ItemChart = new Chart(ctx).Bar(data, options);
+                // get images and wait for them
                 $('#itemLegend').html(_this.ItemChart.generateLegend());
             });
         });
@@ -167,6 +197,7 @@ function BilgewaterControl() {
         _this.LoadItemChart('TopWinrate');
     };
     this.InitMercs = function () {
+        // get images and wait for them
         $.when(_this.LoadItemImages([3611, 3612, 3613, 3614, 3070])).done(function () {
             $.getJSON('/Data/Role', function (response) {
                 var ctx = $('#roleStats').get(0).getContext("2d");
@@ -191,13 +222,14 @@ function BilgewaterControl() {
                         }
                     ]
                 };
+                // fill dataset for bilgewater
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Tank'].Winrate));
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Mage'].Winrate));
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Marksman'].Winrate));
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Fighter'].Winrate));
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Support'].Winrate));
                 data.datasets[0].data.push(formatRole(response.Bilgewater['Assassin'].Winrate));
-
+                // fill dataset for ranked
                 data.datasets[1].data.push(formatRole(response.Ranked['Tank'].Winrate));
                 data.datasets[1].data.push(formatRole(response.Ranked['Mage'].Winrate));
                 data.datasets[1].data.push(formatRole(response.Ranked['Marksman'].Winrate));
@@ -210,7 +242,9 @@ function BilgewaterControl() {
                     scaleLabel: "<%=value%> %",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
+                // create chart
                 var myBarChart = new Chart(ctx).Bar(data, options);
+                // create legend
                 $('#roleLegend').html(myBarChart.generateLegend());
             }),
             $.getJSON('/Data/Duration', function (response) {
@@ -236,13 +270,14 @@ function BilgewaterControl() {
                         }
                     ]
                 };
+                // fill dataset for bilgewater
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgMatchDuration));
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgFirstblood));
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgFirstTower));
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgFirstDragon));
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgFirstInhib));
                 data.datasets[0].data.push(formatDuration(response.Bilgewater.AvgFirstBaron));
-
+                // fill dataset for ranked
                 data.datasets[1].data.push(formatDuration(response.Ranked.AvgMatchDuration));
                 data.datasets[1].data.push(formatDuration(response.Ranked.AvgFirstblood));
                 data.datasets[1].data.push(formatDuration(response.Ranked.AvgFirstTower));
@@ -255,7 +290,9 @@ function BilgewaterControl() {
                     scaleLabel: "<%=value%> min",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
+                // create chart
                 var myBarChart = new Chart(ctx).Bar(data, options);
+                // create legend
                 $('#durationLegend').html(myBarChart.generateLegend());
             }),
             $.getJSON('/Data/Mercs', function (response) {
@@ -281,6 +318,7 @@ function BilgewaterControl() {
                         }
                     ]
                 };
+                // fill dataset
                 for (var i = 0; i < response.Stats.length; i++) {
                     data.labels.push(response.Stats[i].Id);
                     data.datasets[0].data.push(response.Stats[i].Pickrate);
@@ -292,8 +330,11 @@ function BilgewaterControl() {
                     multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
+                // create chart
                 var myBarChart = new Chart(ctx).Bar(data, options);
+                // create legend
                 $('#mercLegend').html(myBarChart.generateLegend());
+                // create merc description panel
                 var descPanel = $('#mercs');
                 for (var i = 0; i < response.Infos.length; i++) {
                     var elem = $('<div class="merc-description"><img class="img-rounded" src="/Image/Item/' + response.Infos[i].Id + '" title="merc" /><div class="desc">' + response.Infos[i].Name + '</div><div class="desc">' + response.Infos[i].Description + '</div></div>');
@@ -305,8 +346,10 @@ function BilgewaterControl() {
         });
     };
     this.ShowItemDetails = function (id) {
+        // get item details from server
         $.getJSON('/Data/Item/' + id, function (data) {
             $('#dialogTitle').text(data.Description.Name);
+            // fill elements - here would be a template engine a better solution
             $('.label-success, .label-danger').removeClass('label-success').removeClass('label-danger');
             if (data.Ranked != null) {
                 if (data.Bilgewater.Winrate > data.Ranked.Winrate) {
@@ -341,11 +384,12 @@ function BilgewaterControl() {
         });
     }
     this.ShowChampDetails = function (id, key) {
+        // get item Champion from server
         $.getJSON('/Data/Champion/'+key, function (data) {
             $('#dialogTitle').text(data.Description.Name + ' - ' + data.Description.Title);
             $('#dialogBody').css('background-image', 'url(/Image/Splash/' + key + ')');
             $('.label-success, .label-danger').removeClass('label-success').removeClass('label-danger');
-
+            // fill elements - here would be a template engine a better solution
             if (data.Bilgewater.Winrate > data.Ranked.Winrate) {
                 $('#wrBilgewater').addClass('label-success');
                 $('#wrRanked').addClass('label-danger');

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <h3>How to get it running locally</h3>
+    <ul>
+        <li>Downloaded Visual Stuido Web Express</li>
+        <li>Open the Solution "Lol.Api.Challenge2.sln"</li>
+        <li>Compile</li>
+        <li>Create a Directory for storing you data - for example "c:\temp"</li>
+        <li>
+            Enter this directory in the config files of all projects
+            <ul>
+                <li>\Lol.Matchloader.Console\app.config</li>
+                <li>\Lol.Bilgewater.Melter\app.config</li>
+                <li>\Lol.Bilgewater\web.config</li>
+            </ul>
+            Look for following Element:
+            &lt;appsettings&gt;
+            &lt;add key="DataPath" value="[your path]" /&gt;
+            &lt;/appsettings&gt;
+        </li>
+        <li>
+            Create two subdirectories
+            <ul>
+                <li>\BILGEWATER\Source</li>
+                <li>\RANKED_SOLO\Source</li>
+            </ul>
+        </li>
+        <li>
+            Download the Datasets provided for the challenge and extract the contents to the folders. No Subfolders, all the JSON files have to be in the "Source" folders
+        </li>
+        <li>
+            Now you have to download the matchdata by running the \Lol.Matchloader.Console\bin\debug\Lol.Matchloader.Console.exe [region] [source] [apikey]
+            <ul>
+                <li>region is one of the known regions like na, euw, lan, ...</li>
+                <li>source is BILGEWATER or RANKED_SOLO</li>
+                <li>apikey is your apikey for accessing riot api</li>
+            </ul>
+        </li>
+        <li>Do this for all combinations of region and source</li>
+        <li>Copy the mercs.xml form \Lol.Bilgewater\Content to [your data store]\metadata</li>
+        <li>Run \Lol.Bilgewater.Melter\bin\debug\Lol.Bilgewater.Melter.exe</li>
+        <li>
+            Place you apikey in the \Lol.Bilgewater\web.config
+            Look for following Element:
+            &lt;appsettings&gt;
+            &lt;add key="ApiKey" value="[your key]" /&gt;
+            &lt;/appsettings&gt;
+        </li>
+        <li>When your data is prepared you can launch the Webapp \Lol.Bilgewater</li>
+    </ul>
+    <h3>Notes</h3>
+    <ul>
+        <li>Modified Javascript files are</li>
+        <ul>
+            <li>Scripts\Chart.js for X-Axis Icon display</li>
+            <li>Scripts\Site.js for all Script-logic</li>
+        </ul>
+    </ul>
+</body>
+</html>

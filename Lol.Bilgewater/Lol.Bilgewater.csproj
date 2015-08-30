@@ -345,6 +345,7 @@
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Image\Bilgewater\act-1-world-layer-base.jpg" />
     <Content Include="Image\Bilgewater\bilgewater-hirelings.png" />
+    <Content Include="readme.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
