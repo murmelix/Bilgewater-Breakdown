@@ -13,7 +13,6 @@
 x64/
 build/
 packages/
-match/
 Image/
 [Bb]in/
 [Oo]bj/
@@ -160,15 +159,8 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-Lol.Matchloader/Content/euw/euw_matches.zip
-Lol.Matchloader/Content/na/na_matches.zip
-Lol.Matchloader/Content/euw/euw_matches.zip
-Lol.Matchloader/Content/na/na_matches.zip
-Lol.Matchloader/Content/Match/na/na_matches.zip
 *.json
 *.zip
 *.proto
-Lol.Bilgewater/Web.config
-Lol.Bilgewater/Web.config
 *.bat
 *.dll
