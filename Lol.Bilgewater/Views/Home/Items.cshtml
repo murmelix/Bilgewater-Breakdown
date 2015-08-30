@@ -31,7 +31,7 @@
 <div class="row" style="min-height: 995px; ">
     <div class="col-xs-12">
         <div class="well" style="height:auto">
-            @foreach (var x in Lol.Bilgewater.Models.ViewModel.ItemsFiltered.Values.Where(x => x.Depth ==3  &&( x.Maps == null || x.Maps.Any(y => y.Key == "11" && y.Value) || !x.Maps.Any(y => y.Key == "11" && !y.Value))))
+            @foreach (var x in Lol.Bilgewater.Models.ViewModel.ItemsFiltered.Values.Where(x => (!ViewBag.OnlyBilgewater || x.IsBilgewater) && x.Depth >= 3 && (x.Maps == null || x.Maps.Any(y => y.Key == "11" && y.Value) || !x.Maps.Any(y => y.Key == "11" && !y.Value))))
             {
                 <div class="champicon-portrait">
                     <a href="#" onclick="ctrl.ShowItemDetails(@(x.Id))" data-toggle="modal" data-target="#dialog">
@@ -85,6 +85,6 @@
 {
     <script type="text/javascript">
         var ctrl = new BilgewaterControl();
-        ctrl.Init('Items');
+        ctrl.Init('Items', @(ViewBag.OnlyBilgewater.ToString().ToLower()));
     </script>
 }

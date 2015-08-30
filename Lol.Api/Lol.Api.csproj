@@ -69,7 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bilgewater\CharMerit.cs" />
+    <Compile Include="Bilgewater\Merit.cs" />
     <Compile Include="Bilgewater\MercStatistcs.cs" />
     <Compile Include="Bilgewater\MercTeam.cs" />
     <Compile Include="Bilgewater\MercData.cs" />

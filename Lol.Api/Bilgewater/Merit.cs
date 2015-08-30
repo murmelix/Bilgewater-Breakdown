@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lol.Api.Bilgewater
 {
-    public class CharMerit
+    public class Merit
     {
         public int Id { get; set; }
         public string Key { get; set; }

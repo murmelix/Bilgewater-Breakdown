@@ -1,51 +1,7 @@
-﻿@model Lol.Bilgewater.Models.ViewModel
+﻿
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 }
-<br />
-<div class="row" style="min-height: 995px; ">
-    <div class="col-xs-6">        
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Merc Popularity</h3>
-            </div>
-            <div class="panel-body chart">
-                <canvas id="mercPopularity" height="200"></canvas>
-                <div id="mercLegend"></div>
-            </div>
-        </div>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Duration Stats</h3>
-            </div>
-            <div class="panel-body chart">
-                <canvas id="durationStats" height="200"></canvas>
-                <div id="durationLegend"></div>
-            </div>
-        </div>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">Role Stats</h3>
-            </div>
-            <div class="panel-body chart">
-                <canvas id="roleStats" height="200"></canvas>
-                <div id="roleLegend"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6">
-        <div id="mercs" class="well" style="float: right;display:none;">
 
-        </div>
-    </div>
-</div>
+<h2>Index</h2>
 
-@section scripts
-{
-    <script type="text/javascript">       
-        var ctrl = new BilgewaterControl();
-        $(function () {
-            ctrl.Init('Mercs');
-        });
-    </script>
-}

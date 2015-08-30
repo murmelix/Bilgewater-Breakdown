@@ -2,7 +2,8 @@
 
 function BilgewaterControl() {
     var _this = this;
-    this.Init = function (view) {
+    this.Init = function (view, onlyBilgewater) {
+        _this.OnlyBilgewater = onlyBilgewater;
         if (view == 'Mercs')
             _this.InitMercs();
         if (view == 'Champions')
@@ -105,7 +106,7 @@ function BilgewaterControl() {
         $('#itemChartSelection').text(title);
     };
     this.LoadItemChart = function (id) {
-        $.getJSON('/Data/ItemChart/' + id, function (response) {
+        $.getJSON('/Data/ItemChart/' + id + '?onlyBilgewater=' + _this.OnlyBilgewater, function (response) {
             if (_this.ItemChart != null)
                 _this.ItemChart.destroy();
             var toLoad = [];

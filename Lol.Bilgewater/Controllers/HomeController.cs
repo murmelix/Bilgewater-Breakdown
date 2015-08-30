@@ -32,24 +32,38 @@ namespace Lol.Bilgewater.Controllers
                 ViewModel.FromSession.Region = "all";            
             }
             ViewBag.CurrentCulture = Thread.CurrentThread.CurrentUICulture;
+            return RedirectToAction(ViewModel.FromSession.CurrentView);
+        }
+
+        public ActionResult Welcome()
+        {
+            ViewModel.FromSession.CurrentView = "Welcome";
+            return View(ViewModel.FromSession);
+        }
+
+        public ActionResult Mercs()
+        {
+            ViewModel.FromSession.CurrentView = "Mercs";
             return View(ViewModel.FromSession);
         }
 
         public ActionResult Champions()
         {
+            ViewModel.FromSession.CurrentView = "Champions";
             return View(ViewModel.FromSession);
         }
 
-        public ActionResult Items()
+        public ActionResult Items(bool OnlyBilgewater)
         {
+            ViewBag.OnlyBilgewater = OnlyBilgewater;
+            ViewModel.FromSession.CurrentView = "Items";
             return View(ViewModel.FromSession);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            ViewModel.FromSession.CurrentView = "About";
+            return View(ViewModel.FromSession);
         }
 
         public ActionResult Contact()

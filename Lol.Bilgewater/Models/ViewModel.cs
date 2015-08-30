@@ -36,7 +36,7 @@ namespace Lol.Bilgewater.Models
             {
                 ViewModel vm = HttpContext.Current.Session["ViewModel"] as ViewModel;
                 if (vm == null)
-                    HttpContext.Current.Session["ViewModel"] = vm = new ViewModel {Region="all" };
+                    HttpContext.Current.Session["ViewModel"] = vm = new ViewModel { Region = "all", CurrentView = "Welcome" };
                 return vm;
             }
         }
@@ -152,5 +152,7 @@ namespace Lol.Bilgewater.Models
         public static string ApiKey { get { return WebConfigurationManager.AppSettings["ApiKey"]; } }
 
         public string Region { get; set; }
+
+        public string CurrentView { get; set; }
     }
 }

@@ -191,29 +191,29 @@ namespace Lol.Bilgewater.Controllers
             };
         }
 
-        public ActionResult ItemChart(string id)
+        public ActionResult ItemChart(string id, bool onlyBilgewater)
         {
             switch (id)
             {
                 case "LowestWinrate":
-                    return CalculateItemLowestWinrate();
+                    return CalculateItemLowestWinrate(onlyBilgewater);
                 case "TopPickrate":
-                    return CalculateItemTopPickrate();
+                    return CalculateItemTopPickrate(onlyBilgewater);
                 case "LowestPickrate":
-                    return CalculateItemLowestPickrate();
+                    return CalculateItemLowestPickrate(onlyBilgewater);
                 default:
-                    return CalculateItemTopWinrate();
+                    return CalculateItemTopWinrate(onlyBilgewater);
             }
         }
-        private ActionResult CalculateItemTopPickrate()
+        private ActionResult CalculateItemTopPickrate(bool onlyBilgewater)
         {
             var ranked = ItemsRanked;
-            var list = ItemsBilgewater.Values.Where(x=>x.Id > 0).OrderByDescending(x => x.Pickrate).Select(x => new CharMerit
+            var list = ItemsBilgewater.Values.Where(x => x.Id > 0 && (!onlyBilgewater || IsBiglewater(x))).OrderByDescending(x => x.Pickrate).Select(x => new Merit
             {
                 Id = ViewModel.Items[x.Id.ToString()].Id,
                 Name = ViewModel.Items[x.Id.ToString()].Name,
                 ValueBilgewater = x.Pickrate,
-                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Pickrate
+                ValueRanked = SafePickrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id))
             }).Take(10).ToList();
             return new JsonResult
             {
@@ -225,15 +225,39 @@ namespace Lol.Bilgewater.Controllers
             };
         }
 
-        private ActionResult CalculateItemLowestPickrate()
+        private bool IsBiglewater(ItemStats x)
+        {
+            return ViewModel.ItemsFiltered[x.Id.ToString()].IsBilgewater;
+        }
+
+        private ActionResult CalculateItemLowestPickrate(bool onlyBilgewater)
         {
             var ranked = ItemsRanked;
-            var list = ItemsBilgewater.Values.OrderBy(x => x.Pickrate).Select(x => new CharMerit
+            var list = ItemsBilgewater.Values.Where(x => x.Id > 0 && (!onlyBilgewater || IsBiglewater(x))).OrderBy(x => x.Pickrate).Select(x => new Merit
             {
                 Id = ViewModel.Items[x.Id.ToString()].Id,
                 Name = ViewModel.Items[x.Id.ToString()].Name,
                 ValueBilgewater = x.Pickrate,
-                ValueRanked = ranked.Values.FirstOrDefault(y => y.Id == x.Id).Pickrate
+                ValueRanked = SafePickrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id))
+            }).Take(10).ToList();
+            return new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new
+                {
+                    Items = list
+                }
+            };
+        }
+        private ActionResult CalculateItemLowestWinrate(bool onlyBilgewater)
+        {
+            var ranked = ItemsRanked;
+            var list = ItemsBilgewater.Values.Where(x => x.Id > 0 && (!onlyBilgewater || IsBiglewater(x))).OrderBy(x => x.Winrate).Select(x => new Merit
+            {
+                Id = ViewModel.Items[x.Id.ToString()].Id,
+                Name = ViewModel.Items[x.Id.ToString()].Name,
+                ValueBilgewater = x.Winrate * 100,
+                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100
             }).Take(10).ToList();
             return new JsonResult
             {
@@ -245,15 +269,15 @@ namespace Lol.Bilgewater.Controllers
             };
         }
 
-        private ActionResult CalculateItemLowestWinrate()
+        private ActionResult CalculateItemTopWinrate(bool onlyBilgewater)
         {
             var ranked = ItemsRanked;
-            var list = ItemsBilgewater.Values.OrderBy(x => x.Winrate).Select(x => new CharMerit
+            var list = ItemsBilgewater.Values.Where(x => x.Id > 0 && (!onlyBilgewater || IsBiglewater(x))).OrderByDescending(x => x.Winrate).Select(x => new Merit
             {
                 Id = ViewModel.Items[x.Id.ToString()].Id,
                 Name = ViewModel.Items[x.Id.ToString()].Name,
                 ValueBilgewater = x.Winrate * 100,
-                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate * 100
+                ValueRanked = SafeWinrate(ranked.Values.FirstOrDefault(y => y.Id == x.Id)) * 100
             }).Take(10).ToList();
             return new JsonResult
             {
@@ -265,25 +289,22 @@ namespace Lol.Bilgewater.Controllers
             };
         }
 
-        private ActionResult CalculateItemTopWinrate()
+        private float SafeWinrate(ItemStats itemStats)
         {
-            var ranked = ItemsRanked;
-            var list = ItemsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new CharMerit
-            {
-                Id = ViewModel.Items[x.Id.ToString()].Id,
-                Name = ViewModel.Items[x.Id.ToString()].Name,
-                ValueBilgewater = x.Winrate * 100,
-                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate * 100
-            }).Take(10).ToList();
-            return new JsonResult
-            {
-                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-                Data = new
-                {
-                    Items = list
-                }
-            };
+            if (itemStats == null)
+                return 0;
+            else
+                return itemStats.Winrate;
         }
+
+        private float SafePickrate(ItemStats itemStats)
+        {
+            if (itemStats == null)
+                return 0;
+            else
+                return itemStats.Pickrate;
+        }
+
 
         public ActionResult ChampionChart(string id)
         {
@@ -303,7 +324,7 @@ namespace Lol.Bilgewater.Controllers
         private ActionResult CalculateChampionTopPickrate()
         {
             var ranked = ChampionsRanked;
-            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Pickrate).Select(x => new CharMerit
+            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Pickrate).Select(x => new Merit
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
@@ -323,7 +344,7 @@ namespace Lol.Bilgewater.Controllers
         private ActionResult CalculateChampionLowestPickrate()
         {
             var ranked = ChampionsRanked;
-            var list = ChampionsBilgewater.Values.OrderBy(x => x.Pickrate).Select(x => new CharMerit
+            var list = ChampionsBilgewater.Values.OrderBy(x => x.Pickrate).Select(x => new Merit
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
@@ -343,7 +364,7 @@ namespace Lol.Bilgewater.Controllers
         private ActionResult CalculateChampionLowestWinrate()
         {
             var ranked = ChampionsRanked;
-            var list = ChampionsBilgewater.Values.OrderBy(x => x.Winrate).Select(x => new CharMerit
+            var list = ChampionsBilgewater.Values.OrderBy(x => x.Winrate).Select(x => new Merit
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
@@ -363,7 +384,7 @@ namespace Lol.Bilgewater.Controllers
         private ActionResult CalculateChampionTopWinrate()
         {
             var ranked = ChampionsRanked;
-            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new CharMerit 
+            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new Merit 
             { 
                 Key = ViewModel.ChampionsById[x.Id].Key, 
                 Name = ViewModel.ChampionsById[x.Id].Name,
