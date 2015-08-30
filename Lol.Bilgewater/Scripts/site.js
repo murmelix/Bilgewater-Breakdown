@@ -85,14 +85,25 @@ function BilgewaterControl() {
                         }
                     ]
                 };
+                var format = response.Format;
                 for (var i = 0; i < response.Champions.length; i++) {
                     data.labels.push(response.Champions[i].Key);
-                    data.datasets[0].data.push(formatFloat(response.Champions[i].ValueBilgewater));
-                    data.datasets[1].data.push(formatFloat(response.Champions[i].ValueRanked));
+                    if (response.Format == 'Win') {
+                        data.datasets[0].data.push(formatWin(response.Champions[i].ValueBilgewater));
+                        data.datasets[1].data.push(formatWin(response.Champions[i].ValueRanked));
+                    }
+                    else if (response.Format == 'Int') {
+                        data.datasets[0].data.push(formatInt(response.Champions[i].ValueBilgewater));
+                        data.datasets[1].data.push(formatInt(response.Champions[i].ValueRanked));
+                    }
+                    else {
+                        data.datasets[0].data.push(formatFloat(response.Champions[i].ValueBilgewater));
+                        data.datasets[1].data.push(formatFloat(response.Champions[i].ValueRanked));
+                    }
                 }
                 var options = {
                     yOffset: -20,
-                    scaleLabel: "<%=value%>%",
+                    scaleLabel: format == 'Int' ? "<%=value%>" : "<%=value%>%",
                     multiTooltipTemplate: "<%= datasetLabel %> - <%= value %>",
                     legendTemplate: '<table class="table table-striped table-hover "><tbody><% for (var i=0; i<datasets.length; i++){%><tr><td style="background-color:<%=datasets[i].fillColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></td></tr><%}%></tbody></table>'
                 };
@@ -160,7 +171,7 @@ function BilgewaterControl() {
             $.getJSON('/Data/Role', function (response) {
                 var ctx = $('#roleStats').get(0).getContext("2d");
                 var data = {
-                    labels: ['Tank', 'Mage', 'Marksman', 'Fighter', 'Support', 'Assassin'],
+                    labels: [Strings['Tank'], Strings['Mage'], Strings['Marksman'], Strings['Fighter'], Strings['Support'], Strings['Assassin']],
                     datasets: [
                         {
                             label: "Bilgwater",
@@ -205,7 +216,7 @@ function BilgewaterControl() {
             $.getJSON('/Data/Duration', function (response) {
                 var ctx = $('#durationStats').get(0).getContext("2d");
                 var data = {
-                    labels: ['Matchduration', 'Firstblood', 'First Tower', 'First Drake', 'First Inhibitor', 'First Baron'],
+                    labels: [Strings['Matchduration'], Strings['FirstBlood'], Strings['FirstTower'], Strings['FirstDrake'], Strings['FirstInhibitor'], Strings['FirstBaron']],
                     datasets: [
                         {
                             label: "Bilgwater",
@@ -253,7 +264,7 @@ function BilgewaterControl() {
                     labels: [],
                     datasets: [
                         {
-                            label: "Pickrate",
+                            label: Strings["Pickrate"],
                             fillColor: "rgba(200,200,200,0.5)",
                             strokeColor: "rgba(200,200,200,0.8)",
                             highlightFill: "rgba(200,200,200,0.75)",
@@ -261,7 +272,7 @@ function BilgewaterControl() {
                             data: []
                         },
                         {
-                            label: "Winrate",
+                            label: Strings["Winrate"],
                             fillColor: "rgba(151,187,245,0.5)",
                             strokeColor: "rgba(151,187,245,0.8)",
                             highlightFill: "rgba(151,187,245,0.75)",
@@ -418,6 +429,10 @@ function formatWin(x) {
 
 function formatFloat(x) {
     return Number((x).toFixed(2))
+}
+
+function formatInt(x) {
+    return Number((x).toFixed(0))
 }
 
 function toDateTime(secs) {

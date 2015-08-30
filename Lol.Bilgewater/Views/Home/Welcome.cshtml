@@ -1,15 +1,20 @@
-﻿@model Lol.Bilgewater.Models.ViewModel
+﻿@using Lol.Bilgewater.Resources
+@model Lol.Bilgewater.Models.ViewModel
 @{
 }
 <br />
 <div class="jumbotron">
-    <h1>Willkommen</h1>
-    <p>Bei unserem Beitrag zu der API-Challenge 2.0 wollten wir uns dem 1. möglichen Thema widmen:</p>
+    <h1>@Strings.Welcome</h1>
+    <p>@Strings.WelcomeText1</p>
     <blockquote>
         <p>Given a data set of Black Market Brawlers match IDs, create a piece of software that utilizes the game data from these matches. </p>
         <small>Riot Tuxedo</small>
     </blockquote>
-    <p>Wir haben uns Gedanken gemacht, welche Informationen interessant sein könnten. Unser primäres Ziel war zu analysieren welche Söldner für die Spieler besonders Interessant waren und ob die Spiellänge sich durch die stärkeren Minions verkürzt hat.</p>
-    <p>Als Zusatz haben wir noch ein paar Statistiken zu der Performance der einzelnen Champions und Items hinzugefügt.</p>
-    <p><a href="/Home/Mercs" class="btn btn-primary btn-lg">Los geht's</a></p>
+    <p>@Strings.WelcomeText2</p>
+    <p>@Strings.WelcomeText3</p>
+    <p><a href="/Home/Mercs" class="btn btn-primary btn-lg">@Strings.LetsGo</a></p>
+</div>
+<div class="well">
+    <h3>Aah yes, and do not to forget - Boobs</h3>
+    <img class="img-rounded" style="width:300px;"  src="/Image/boobs.jpg"/>
 </div>

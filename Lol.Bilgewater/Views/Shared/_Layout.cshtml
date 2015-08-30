@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Lol.Bilgewater.Resources
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoL Bilgewater-Breakdown</title>    
+    <title>LoL Bilgewater-Breakdown</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -23,7 +24,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Region@(Model.Region != "all" ? " [" + Model.Region.ToUpper() + "]" : "") <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Strings.Region @(Model.Region != "all" ? " [" + Model.Region.ToUpper() + "]" : "") <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="@Url.Action("Index", "Home", new { Region = "all" })">All</a></li>
                             <li><a href="@Url.Action("Index", "Home", new { Region = "br" })">BR</a></li>
@@ -38,18 +39,18 @@
                             <li><a href="@Url.Action("Index", "Home", new { Region = "tr" })">TR</a></li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Stats", "Mercs", "Home")</li>
+                    <li>@Html.ActionLink(Strings.Charts, "Mercs", "Home")</li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Items <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@Strings.Items <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="@Url.Action("Items", "Home", new { OnlyBilgewater = false })">Alle</a></li>
-                            <li><a href="@Url.Action("Items", "Home", new { OnlyBilgewater = true })">Nur Bilgewater</a></li>
+                            <li><a href="@Url.Action("Items", "Home", new { OnlyBilgewater = false })">@Strings.All</a></li>
+                            <li><a href="@Url.Action("Items", "Home", new { OnlyBilgewater = true })">@Strings.OnlyBilgewater</a></li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Champions", "Champions", "Home")</li>
-                    <li>@Html.ActionLink("Dokumentation", "About", "Home")</li>
+                    <li>@Html.ActionLink(Strings.Champions, "Champions", "Home")</li>
+                    <li>@Html.ActionLink(Strings.Documentation, "About", "Home")</li>
                 </ul>
-</div>
+            </div>
         </div>
     </div>
     <div class="container body-content">
@@ -66,6 +67,23 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/site")
+    <script type="text/javascript">
+        var Strings = {};
+        Strings["FirstBlood"]= '@(Strings.FirstBlood)'
+        Strings["Matchduration"]= '@(Strings.Matchduration)'
+        Strings["FirstTower"]= '@(Strings.FirstTower)'
+        Strings["FirstDrake"]= '@(Strings.FirstDrake)'
+        Strings["FirstInhibitor"]= '@(Strings.FirstInhibitor)'
+        Strings["FirstBaron"]= '@(Strings.FirstBaron)'
+        Strings["Winrate"] = '@(Strings.Winrate)'
+        Strings["Pickrate"] = '@(Strings.Pickrate)'
+        Strings["Tank"] = '@(Strings.Tank)'
+        Strings["Mage"] = '@(Strings.Mage)'
+        Strings["Marksman"] = '@(Strings.Marksman)'
+        Strings["Fighter"] = '@(Strings.Fighter)'
+        Strings["Support"] = '@(Strings.Support)'
+        Strings["Assassin"] = '@(Strings.Assassin)'
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

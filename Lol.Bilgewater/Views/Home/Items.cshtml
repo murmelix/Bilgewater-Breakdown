@@ -1,4 +1,5 @@
-﻿@model Lol.Bilgewater.Models.ViewModel
+﻿@using Lol.Bilgewater.Resources
+@model Lol.Bilgewater.Models.ViewModel
 @{
     ViewBag.Title = "Items";
 }
@@ -7,19 +8,19 @@
     <div class="col-xs-12">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">Items</h3>
+                <h3 class="panel-title">@Strings.Items</h3>
             </div>
             <div class="panel-body">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom:10px;">
-                        <span id="itemChartSelection">Top Winrate</span>
+                        <span id="itemChartSelection">@Strings.TopWinrate</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#" onclick="ctrl.SelectItemChart('TopWinrate', 'Top Winrate')">Top Winrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestWinrate', 'Lowest Winrate')">Lowest Winrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectItemChart('TopPickrate', 'Top Pickrate')">Top Pickrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestPickrate', 'Lowest Pickrate')">Lowest Pickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('TopWinrate', '@(Strings.TopWinrate)')">@Strings.TopWinrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestWinrate', '@(Strings.LowestWinrate)')">@Strings.LowestWinrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('TopPickrate', '@(Strings.TopPickrate)')">@Strings.TopPickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectItemChart('LowestPickrate', '@(Strings.LowesPickrate)')">@Strings.LowesPickrate</a></li>
                     </ul>
                 </div>
                 <canvas id="itemChart" height="200" width="600"></canvas>
@@ -60,12 +61,12 @@
                         <div class="col-xs-4"><span class="label label-default">Ranked</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Winrate</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Winrate</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="wrBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="wrRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Pickrate</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Pickrate</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="pickBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="pickRanked">5%</span></div>
                     </div>
@@ -75,7 +76,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Strings.Close</button>
             </div>
         </div>
     </div>

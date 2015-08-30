@@ -1,4 +1,5 @@
-﻿@model Lol.Bilgewater.Models.ViewModel
+﻿@using Lol.Bilgewater.Resources
+@model Lol.Bilgewater.Models.ViewModel
 @{
     ViewBag.Title = "Champions";
 }
@@ -7,19 +8,21 @@
     <div class="col-xs-12">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">Champions</h3>
+                <h3 class="panel-title">@Strings.Champions</h3>
             </div>            
             <div class="panel-body">
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="margin-bottom:10px;">
-                        <span id="championChartSelection">Top Winrate</span>
+                        <span id="championChartSelection">@Strings.TopWinrate</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopWinrate', 'Top Winrate')">Top Winrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestWinrate', 'Lowest Winrate')">Lowest Winrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopPickrate', 'Top Pickrate')">Top Pickrate</a></li>
-                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestPickrate', 'Lowest Pickrate')">Lowest Pickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopWinrate','@(Strings.TopWinrate)')">@Strings.TopWinrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestWinrate', '@(Strings.LowestWinrate)')">@Strings.LowestWinrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopPickrate', '@(Strings.TopPickrate)')">@Strings.TopPickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestPickrate', '@(Strings.LowesPickrate)')">@Strings.LowesPickrate</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('TopAvgCS', '@(Strings.TopAvgCS)')">@Strings.TopAvgCS</a></li>
+                        <li><a href="#" onclick="ctrl.SelectChampionChart('LowestAvgCS', '@(Strings.LowestAvgCS)')">@Strings.LowestAvgCS</a></li>
                     </ul>
                 </div>
                 <canvas id="championChart" height="200" width="600"></canvas>
@@ -61,39 +64,39 @@
                         <div class="col-xs-4"><span class="label label-default">Ranked</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Winrate</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Winrate</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="wrBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="wrRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Pickrate</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Pickrate</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="pickBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="pickRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Kills</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Kills</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="killsBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="killsRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Death</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Death</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="deathBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="deahtRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">Assists</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.Assists</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="assistsBilgewater">10%</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="assistsRanked">5%</span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-4"><span class="label label-default">CS</span></div>
+                        <div class="col-xs-4"><span class="label label-default">@Strings.CS</span></div>
                         <div class="col-xs-4"><span class="label label-success" id="csBilgewater">200</span></div>
                         <div class="col-xs-4"><span class="label label-danger" id="csRanked">100</span></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">@Strings.Close</button>
             </div>
         </div>
     </div>

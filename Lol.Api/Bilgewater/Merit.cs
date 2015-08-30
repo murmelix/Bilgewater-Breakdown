@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lol.Api.Bilgewater
 {
+    public enum MerictFormat { Win, Float, Int}
     public class Merit
     {
         public int Id { get; set; }

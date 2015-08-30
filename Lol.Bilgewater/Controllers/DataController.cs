@@ -310,6 +310,10 @@ namespace Lol.Bilgewater.Controllers
         {
             switch (id)
             {
+                case "TopAvgCS":
+                    return CalculateChampionTopAvgCS();
+                case "LowestAvgCS":
+                    return CalculateChampionLowestAvgCS();
                 case "LowestWinrate":
                     return CalculateChampionLowestWinrate();
                 case "TopPickrate":
@@ -319,6 +323,48 @@ namespace Lol.Bilgewater.Controllers
                 default:
                     return CalculateChampionTopWinrate();
             }
+        }
+
+        private ActionResult CalculateChampionTopAvgCS()
+        {
+            var ranked = ChampionsRanked;
+            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.AvgMinionCount + x.AvgJungleCount).Select(x => new Merit
+            {
+                Key = ViewModel.ChampionsById[x.Id].Key,
+                Name = ViewModel.ChampionsById[x.Id].Name,
+                ValueBilgewater = x.AvgMinionCount+x.AvgJungleCount,
+                ValueRanked = ranked.Values.First(y => y.Id == x.Id).AvgMinionCount + ranked.Values.First(y => y.Id == x.Id).AvgJungleCount
+            }).Take(10).ToList();
+            return new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new
+                {
+                    Format = MerictFormat.Int.ToString(),
+                    Champions = list
+                }
+            };
+        }
+
+        private ActionResult CalculateChampionLowestAvgCS()
+        {
+            var ranked = ChampionsRanked;
+            var list = ChampionsBilgewater.Values.OrderBy(x => x.AvgMinionCount + x.AvgJungleCount).Select(x => new Merit
+            {
+                Key = ViewModel.ChampionsById[x.Id].Key,
+                Name = ViewModel.ChampionsById[x.Id].Name,
+                ValueBilgewater = x.AvgMinionCount + x.AvgJungleCount,
+                ValueRanked = ranked.Values.First(y => y.Id == x.Id).AvgMinionCount + ranked.Values.First(y => y.Id == x.Id).AvgJungleCount
+            }).Take(10).ToList();
+            return new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new
+                {
+                    Format = MerictFormat.Int.ToString(),
+                    Champions = list
+                }
+            };
         }
 
         private ActionResult CalculateChampionTopPickrate()
@@ -336,6 +382,7 @@ namespace Lol.Bilgewater.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    Format = MerictFormat.Float.ToString(),
                     Champions = list
                 }
             };
@@ -356,6 +403,7 @@ namespace Lol.Bilgewater.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    Format = MerictFormat.Float.ToString(),
                     Champions = list
                 }
             };
@@ -368,14 +416,15 @@ namespace Lol.Bilgewater.Controllers
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
-                ValueBilgewater = x.Winrate*100,
-                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate * 100
+                ValueBilgewater = x.Winrate,
+                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate
             }).Take(10).ToList();
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    Format = MerictFormat.Win.ToString(),
                     Champions = list
                 }
             };
@@ -385,17 +434,18 @@ namespace Lol.Bilgewater.Controllers
         {
             var ranked = ChampionsRanked;
             var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new Merit 
-            { 
-                Key = ViewModel.ChampionsById[x.Id].Key, 
+            {
+                Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
-                ValueBilgewater = x.Winrate * 100,
-                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate * 100
+                ValueBilgewater = x.Winrate,
+                ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate
             }).Take(10).ToList();                        
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Data = new
                 {
+                    Format = MerictFormat.Win.ToString(),
                     Champions = list
                 }
             };

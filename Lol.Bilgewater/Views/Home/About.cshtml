@@ -1,37 +1,36 @@
-﻿@{
+﻿@using Lol.Bilgewater.Resources
+@{
     ViewBag.Title = "About";
 }
 <br />
 <div class="well">
-    <h3>Tools</h3>
+    <h3>@Strings.Tools</h3>
     <p>
-        Für die Entwicklung haben wir hauptsächlich <a href="https://www.visualstudio.com/de-de/products/visual-studio-express-vs.aspx">Visual Studio Express</a> verwendet. Die Entwicklungsumgebung von Microsoft ist frei verfügbar für den nicht kommerziellen Gebrauch und macht die Entwicklung von einfachen MVC Webanwednungen sehr einfach.
+        @Html.Raw(string.Format(Strings.ToolsText1, "<a href='https://www.visualstudio.com/de-de/products/visual-studio-express-vs.aspx'>Visual Studio Express</a>"))
     </p>
     <p>
-        Das Programm bietet zudem eine sehr einfache GIT-Integration und man kann sein Projekt unglaublich unkompliziert auf seiner <a href="http://azure.microsoft.com/">Azure-Website</a> publizieren. was zudem wirklich praktisch ist, ist die Möglichkeit allerlei Nuget-Pakete in sein Projekt zu ziehen. Alle Bibliotheken die wir für die Entwicklung des Projektes benutzt habe waren im Nuget Verzeichnis verfügbar.
-    </p>
-</div>
-<div class="well">
-    <h3>Datenaufbereitung</h3>
-    <p>
-        Umd die Daten der Riot Api zu verarbeiten haben wir eine kleine Bibliothek geschrieben, welche die einzelen Datenobjekte abbildet. Später erst haben wir herrausgefunden, dass es soetwas schon gibt.
-    </p>
-    <p>
-        Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek <a href="http://icsharpcode.github.io/SharpZipLib/">SharpZipLib</a> komprimiert.
-    </p>
-    <p>
-        Um die wichtigen Daten aus den realtiv Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek <a href="http://www.newtonsoft.com/json">Json.NET</a> verwendet. Die Daten wurden dann mit der Protobuf Bibilothek Serialisiert. <a href="https://code.google.com/p/protobuf-net/">Protobuf</a> ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.
-        <br />
-        Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.
+        @Html.Raw(string.Format(Strings.ToolsText2, "<a href='http://azure.microsoft.com/'>Azure-Website</a>"))
     </p>
 </div>
 <div class="well">
-    <h3>Darstellung</h3>
+    <h3>@Strings.DataProcessing</h3>
     <p>
-        Für das Design der Website verwenden wir <a href="http://getbootstrap.com/">Bootstrap</a> mit dem Theme <a href="http://bootswatch.com/slate/">Slate</a>. Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek <a href="http://www.chartjs.org/">Charts.js</a> entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.
+        @Strings.DataText1
     </p>
     <p>
-        Weitere Technologien:
+        @Html.Raw(string.Format(Strings.DataText2, "<a href='http://icsharpcode.github.io/SharpZipLib/'>SharpZipLib</a>"))        
+    </p>
+    <p>
+        @Html.Raw(string.Format(Strings.DataText3, "<a href='https://code.google.com/p/protobuf-net/'>Protobuf</a>", "<a href='http://www.newtonsoft.com/json'>Json.NET</a>", "<a href='http://www.chartjs.org/'>Charts.js</a>"))        
+    </p>
+</div>
+<div class="well">
+    <h3>@Strings.Presentation</h3>
+    <p>
+        @Html.Raw(string.Format(@Strings.PresentationText1,"<a href='http://getbootstrap.com/'>Bootstrap</a>","<a href='http://bootswatch.com/slate/'>Slate</a>"))        
+    </p>
+    <p>
+                @Strings.PresentationText2        
         <ul>
             <li><a href="http://www.w3schools.com/aspnet/webpages_razor.asp">ASP.NET MVC Razor</a></li>
             <li><a href="https://jquery.com/">jQuery</a></li>
