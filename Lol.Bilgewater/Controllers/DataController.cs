@@ -1,6 +1,8 @@
 ﻿using Lol.Api.Bilgewater;
 using Lol.Api.Bilgewater.Samples;
 using Lol.Api.Static;
+using Lol.Api.Static.Items;
+using Lol.Api.Toolkit;
 using Lol.Bilgewater.Models;
 using System;
 using System.Collections.Generic;
@@ -77,15 +79,15 @@ namespace Lol.Bilgewater.Controllers
                 }
             }
         }
-
+        [NoCache]
         public ActionResult Mercs()
         {
             string region = ViewModel.FromSession.Region;
             var protopath = Path.Combine(DataPath, "BILGEWATER", "Samples", region, "Merc.proto");
             using (var s = new FileStream(protopath, FileMode.Open))
-            {                
+            {
                 var data = ProtoBuf.Serializer.Deserialize<Dictionary<int, MercStats>>(s);
-                var infos = ViewModel.Items.Where(x => data.Keys.Contains(x.Value.Id)).Select(x=>x.Value).ToList();
+                var infos = ViewModel.Items.Where(x => data.Keys.Contains(x.Value.Id)).Select(x => x.Value).ToList();
                 data[-1].Id = 3070;//träne
                 return new JsonResult
                 {
@@ -96,7 +98,7 @@ namespace Lol.Bilgewater.Controllers
                         Infos = infos
                     }
                 };
-            }            
+            }
         }
 
         public ActionResult Role()
@@ -123,7 +125,7 @@ namespace Lol.Bilgewater.Controllers
                 }
             };
         }
-
+        [NoCache]
         public ActionResult Champion(string id)
         {
             var champ = ViewModel.Champions[id];
@@ -138,7 +140,7 @@ namespace Lol.Bilgewater.Controllers
                 }
             };
         }
-
+        [NoCache]
         public ActionResult Item(string id)
         {
             string region = ViewModel.FromSession.Region;
@@ -332,7 +334,7 @@ namespace Lol.Bilgewater.Controllers
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
-                ValueBilgewater = x.AvgMinionCount+x.AvgJungleCount,
+                ValueBilgewater = x.AvgMinionCount + x.AvgJungleCount,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).AvgMinionCount + ranked.Values.First(y => y.Id == x.Id).AvgJungleCount
             }).Take(10).ToList();
             return new JsonResult
@@ -433,13 +435,13 @@ namespace Lol.Bilgewater.Controllers
         private ActionResult CalculateChampionTopWinrate()
         {
             var ranked = ChampionsRanked;
-            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new Merit 
+            var list = ChampionsBilgewater.Values.OrderByDescending(x => x.Winrate).Select(x => new Merit
             {
                 Key = ViewModel.ChampionsById[x.Id].Key,
                 Name = ViewModel.ChampionsById[x.Id].Name,
                 ValueBilgewater = x.Winrate,
                 ValueRanked = ranked.Values.First(y => y.Id == x.Id).Winrate
-            }).Take(10).ToList();                        
+            }).Take(10).ToList();
             return new JsonResult
             {
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
@@ -461,5 +463,5 @@ namespace Lol.Bilgewater.Controllers
             // Return char and concat substring.
             return char.ToUpper(s[0]) + s.Substring(1);
         }
-	}
+    }
 }

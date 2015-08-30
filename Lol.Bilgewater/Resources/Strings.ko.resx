@@ -118,165 +118,168 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="All" xml:space="preserve">
-    <value>Alle</value>
+    <value>모든</value>
   </data>
   <data name="Assassin" xml:space="preserve">
-    <value>Assassine</value>
+    <value>암살자</value>
   </data>
   <data name="Assists" xml:space="preserve">
-    <value>Assistiert</value>
+    <value>도움</value>
   </data>
   <data name="Champions" xml:space="preserve">
-    <value>Champions</value>
+    <value>챔피언스</value>
   </data>
   <data name="Charts" xml:space="preserve">
-    <value>Charts</value>
+    <value>차트</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>닫기</value>
   </data>
   <data name="CS" xml:space="preserve">
     <value>CS</value>
   </data>
   <data name="DataProcessing" xml:space="preserve">
-    <value>Datenaufbereitung</value>
+    <value>데이터 처리</value>
+  </data>
+  <data name="DataText1" xml:space="preserve">
+    <value>폭동 API의 데이터를 처리하기 위해, 우리는 개별 데이터 객체를 나타낸다 작은 라이브러리를 썼다. 나중에 우리가 발견,이 같은 뭔가가 이미 존재했다.</value>
   </data>
   <data name="DataText2" xml:space="preserve">
-    <value>Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert.</value>
+    <value>많은 경기 데이터를로드하기 위해, 우리는 매개 변수로 API 키와 지역을 인수 작은 콘솔 프로그램을 썼다. 사용자는 다운로드 프로세스를 가속화하기 위해 프로그램의 다중 인스턴스를 시작할 수있다.데이터는 라이브러리 공간을 절약하는 압축 된 {0}</value>
   </data>
   <data name="DataText3" xml:space="preserve">
-    <value>Um die wichtigen Daten aus den relativ Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.</value>
+    <value>상대적으로 완전한 일치하는 정보에서 중요한 데이터를 추출하기 위해, 우리는 두 번째 콘솔 프로그램을 썼다. 이것은 단지 우리가 흥미로 우리의 분석을 위해 고려 일치 JSON - 파일에서 모든 데이터 값을 추출했다.JSON-파일을 구문 분석을 위해 우리는 도서관 {1} 사용이 있습니다.데이터는 직렬화 라이브러리 protobuf 함께 배양 하였다. {0} 구글의 직렬화 믿을 수 없을만큼 빠르고 세련된 방법이다. /&gt; &lt;br 그 후, 우리는 단지 분석하고 작은 샘플 데이터 값에 값을 저장했다.데이터베이스는 필요하지 않았다.</value>
   </data>
   <data name="Death" xml:space="preserve">
-    <value>Tode</value>
+    <value>죽음</value>
   </data>
   <data name="Documentation" xml:space="preserve">
-    <value>Dokumentation</value>
+    <value>설명서</value>
   </data>
   <data name="DurationStats" xml:space="preserve">
-    <value>Statistik Matchlänge</value>
+    <value>통계 경기 길이</value>
   </data>
   <data name="Fighter" xml:space="preserve">
-    <value>Kaempfer</value>
+    <value>전투기</value>
   </data>
   <data name="FirstBaron" xml:space="preserve">
-    <value>Erster Baron</value>
+    <value>우선 바론</value>
   </data>
   <data name="FirstBlood" xml:space="preserve">
-    <value>Erstes Blut</value>
+    <value>먼저 혈액</value>
   </data>
   <data name="FirstDrake" xml:space="preserve">
-    <value>Erster Drache</value>
+    <value>먼저 드레이크</value>
   </data>
   <data name="FirstInhibitor" xml:space="preserve">
-    <value>Erster Inhibitor</value>
+    <value>먼저 억제제</value>
   </data>
   <data name="FirstTower" xml:space="preserve">
-    <value>Erster Turm</value>
+    <value>첫 번째 타워</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>Gegenstände</value>
+    <value>항목</value>
   </data>
   <data name="Kills" xml:space="preserve">
-    <value>Tötungen</value>
+    <value>킬</value>
   </data>
   <data name="LetsGo" xml:space="preserve">
-    <value>Los geht's</value>
+    <value>가자</value>
   </data>
   <data name="LowesPickrate" xml:space="preserve">
-    <value>Kleinste Pickrate</value>
+    <value>최저 피크 속도</value>
   </data>
   <data name="LowestAvgCS" xml:space="preserve">
-    <value>Kleinste durchschnittliche CS</value>
+    <value>최고 평균 CS</value>
   </data>
   <data name="LowestWinrate" xml:space="preserve">
-    <value>Kleinste Gewinnrate</value>
+    <value>최저 승 속도</value>
   </data>
   <data name="Mage" xml:space="preserve">
-    <value>Magier</value>
+    <value>마술사</value>
   </data>
   <data name="Marksman" xml:space="preserve">
-    <value>Schuetze</value>
+    <value>사격의 명수</value>
   </data>
   <data name="Matchduration" xml:space="preserve">
-    <value>Matchlaenge</value>
+    <value>경기 시간</value>
   </data>
   <data name="MercPopularity" xml:space="preserve">
-    <value>Söldner Beliebtheit</value>
+    <value>용병 인기</value>
   </data>
   <data name="OnlyBilgewater" xml:space="preserve">
-    <value>nur Bilgewater</value>
+    <value>만 Bilgewater</value>
   </data>
   <data name="Pickrate" xml:space="preserve">
-    <value>Pickrate</value>
+    <value>속도를 선택</value>
   </data>
   <data name="Presentation" xml:space="preserve">
-    <value>Darstellung</value>
+    <value>제출</value>
   </data>
   <data name="PresentationText1" xml:space="preserve">
-    <value>Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.</value>
+    <value>사이트의 디자인을 위해, 우리는 주제로 {0} 사용합니다. 부트 스트랩으로 세련된 레이아웃을 만들 비교적 쉽게 할 수 있습니다.차트의 경우, 우리는 자바 스크립트 라이브러리 {1}에 대한 선택했다. 이것은 상대적으로 편안하게 사용하는 것입니다, 그러나 우리는 X 축 수에 아이콘을 표시하기 위해 작은 조정했습니다.</value>
   </data>
   <data name="PresentationText2" xml:space="preserve">
-    <value>Weitere Technologien:</value>
+    <value>추가 기술</value>
   </data>
   <data name="Region" xml:space="preserve">
-    <value>Region</value>
+    <value>지방</value>
   </data>
   <data name="RoleStats" xml:space="preserve">
-    <value>Statistik Rollenperformance</value>
+    <value>통계 역할 성능</value>
   </data>
   <data name="Support" xml:space="preserve">
-    <value>Unterstuetzung</value>
+    <value>지원</value>
   </data>
   <data name="Tank" xml:space="preserve">
-    <value>Tank</value>
+    <value>탱크</value>
   </data>
   <data name="TearNote" xml:space="preserve">
-    <value>Die Träne repräsentiert die Fälle wo der Spieler keinen Söldner gekauft hat.</value>
+    <value>눈물은 플레이어가 용병 중 하나를 선택하지 않은 경우를 나타냅니다.</value>
   </data>
   <data name="Tools" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>도구</value>
   </data>
   <data name="ToolsText1" xml:space="preserve">
-    <value>Für die Entwicklung haben wir hauptsächlich {0} verwendet. Die Entwicklungsumgebung von Microsoft ist frei verfügbar für den nicht kommerziellen Gebrauch und macht die Entwicklung von einfachen MVC Webanwednungen sehr einfach.</value>
+    <value>개발을 위해 우리가 주로 사용 {0}. 마이크로 소프트 양식 개발 환경은 노 상업 프로젝트에 무료로 사용할 수 있습니다. 그것은 MVC 웹 응용 프로그램을 매우 쉽게 개발할 수 있습니다.</value>
   </data>
   <data name="ToolsText2" xml:space="preserve">
-    <value>Das Programm bietet zudem eine sehr einfache GIT-Integration und man kann sein Projekt unglaublich unkompliziert auf seiner {0} publizieren. Was außerdem wirklich praktisch ist, ist die Möglichkeit allerlei Nuget-Pakete in sein Projekt zu ziehen. Alle Bibliotheken die wir für die Entwicklung des Projektes benutzt habe waren im Nuget Verzeichnis verfügbar.</value>
+    <value>프로그램이 매우 간단 GIT-통합 및에 합병증없이 프로젝트를 게시 할 수있는 옵션을 제공 외에 당신의 {0}. 또한 모든 추가 라이브러리 프로젝트에서 nuget 통합을 통해 쉽게 인출 할 수 있습니다. 우리는 우리의 모든 외부 라이브러리를했다.</value>
   </data>
   <data name="TopAvgCS" xml:space="preserve">
-    <value>Höchste durchschnittliche CS</value>
+    <value>최고 평균 CS</value>
   </data>
   <data name="TopPickrate" xml:space="preserve">
-    <value>Höchste Pickrate</value>
+    <value>최고 피크 속도</value>
   </data>
   <data name="TopWinrate" xml:space="preserve">
-    <value>Höchste Gewinnrate</value>
+    <value>탑 승 속도</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Willkommen</value>
+    <value>환영</value>
   </data>
   <data name="WelcomeText1" xml:space="preserve">
-    <value>Bei unserem Beitrag zu der API-Challenge 2.0 wollten wir uns dem 1. möglichen Thema widmen:</value>
+    <value>API-도전 2.0 우리의 항목과 우리는 가능한 주제의 1로 바치고 싶었 :</value>
   </data>
   <data name="WelcomeText2" xml:space="preserve">
-    <value>Wir haben uns Gedanken gemacht, welche Informationen interessant sein könnten. Unser primäres Ziel war zu analysieren welche Söldner für die Spieler besonders Interessant waren und ob die Spiellänge sich durch die stärkeren Minions verkürzt hat.</value>
+    <value>우리는 정보의 어느 대해 재미있을 거라고 생각합니다. 우리의 주요 목표는 게임 길이가 강한 부하의 영향을받는 경우 용병은 플레이어베이스 사이에서 가장 인기가 어느 분석했다.</value>
   </data>
   <data name="WelcomeText3" xml:space="preserve">
-    <value>Als Zusatz haben wir noch ein paar Statistiken zu der Performance der einzelnen Champions und Items hinzugefügt.</value>
+    <value>또한으로 우리는 모든 챔피언과 아이템의 성능에서 통계를 추가했다.</value>
   </data>
   <data name="Winrate" xml:space="preserve">
-    <value>Gewinnrate</value>
+    <value>승 속도</value>
   </data>
   <data name="ConclusionChampions" xml:space="preserve">
-    <value>Der größte Unterschied ist bei den durschnittlichen CS zu erkennen. Alle Top-Farmer haben ca. 20% weniger Farm als im Ranked.</value>
+    <value>모든 챔피언을 통해 가장 큰 차이점은 연사를 allover의 큰 손실이다. 빌지 워터의 모든 상단 농부들은 농장에서 약 20 % 낮다.</value>
   </data>
   <data name="ConclusionDuration" xml:space="preserve">
-    <value>Die Bilgewater-Matches waren merkbar kürzer. Auch alle Ziele wurden in der Regel früher getroffen, ausgenommen der Drache.</value>
+    <value>빌지 워터 일치의 기간은 defenitly 빠르다. 대부분의 목표는 earlyier 드레이크를 제외하고, 촬영.</value>
   </data>
   <data name="ConclusionMercPopularity" xml:space="preserve">
-    <value>Die Nahkampf-Söldner waren am beliebtesten, allerdings sticht keiner der Typen bezüglich Winrate herraus. Eine überraschend große Menge an Spielern kaufte gar keinen Söldner.</value>
+    <value>근접 용병은 더 인기가있을 것 같다,하지만 winrate 공정 배포됩니다. 플레이어의 매우 놀라게 큰 숫자는 용병을 구입하지 않았다.</value>
   </data>
   <data name="ConclusionRoles" xml:space="preserve">
-    <value>Keine großen Unterschiede bei den Rollen. Tanks und Kämpfer sind ein winziges bisschen besser als im Ranked.</value>
+    <value>서로 다른 역할의 성공에 더 큰 variancy 없습니다. 탱크와 전투기에 마이너 푸시.</value>
   </data>
 </root>

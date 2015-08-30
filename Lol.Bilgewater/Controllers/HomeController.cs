@@ -53,9 +53,9 @@ namespace Lol.Bilgewater.Controllers
             return View(ViewModel.FromSession);
         }
 
-        public ActionResult Items(bool OnlyBilgewater)
+        public ActionResult Items(bool? OnlyBilgewater)
         {
-            ViewBag.OnlyBilgewater = OnlyBilgewater;
+            ViewBag.OnlyBilgewater = OnlyBilgewater ?? false;
             ViewModel.FromSession.CurrentView = "Items";
             return View(ViewModel.FromSession);
         }

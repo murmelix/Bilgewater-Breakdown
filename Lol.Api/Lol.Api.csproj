@@ -118,7 +118,6 @@
     <Compile Include="Static\Items\ItemTree.cs" />
     <Compile Include="Static\Items\MetaData.cs" />
     <Compile Include="Toolkit\NoCacheAttribute.cs" />
-    <Compile Include="Toolkit\SupportedCultures.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -115,6 +115,42 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The biggest difference over all champions is the significant loss in CS allover. All top farmers in bilgewater are about 20% lower in farm. ähnelt.
+        /// </summary>
+        public static string ConclusionChampions {
+            get {
+                return ResourceManager.GetString("ConclusionChampions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The duration of Bilgewater matches is defenitly quicker. Most goals are earlyier taken, except drake. ähnelt.
+        /// </summary>
+        public static string ConclusionDuration {
+            get {
+                return ResourceManager.GetString("ConclusionDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The melee mercenaries seem to be more popular, but the winrate is fair distributed. A suprising big number of players, didn&apos;t buy a mercenary. ähnelt.
+        /// </summary>
+        public static string ConclusionMercPopularity {
+            get {
+                return ResourceManager.GetString("ConclusionMercPopularity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die No big variancy on success of different roles. Minor push on tank and fighter. ähnelt.
+        /// </summary>
+        public static string ConclusionRoles {
+            get {
+                return ResourceManager.GetString("ConclusionRoles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die CS ähnelt.
         /// </summary>
         public static string CS {
@@ -133,7 +169,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Umd die Daten der Riot Api zu verarbeiten haben wir eine kleine Bibliothek geschrieben, welche die einzelen Datenobjekte abbildet. Später erst haben wir herrausgefunden, dass es soetwas schon gibt. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die In order to process the data of Riot Api, we wrote a small library, which shows the individual data objects. Later we found out, that something like this already existed. ähnelt.
         /// </summary>
         public static string DataText1 {
             get {
@@ -142,7 +178,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die To load the many match data, we wrote a small console program, which takes over the API key and a region as a parameter. You could start multiple instances of the program in order to accelerate the download process. The data was then compressed to save space with the library {0}  ähnelt.
         /// </summary>
         public static string DataText2 {
             get {
@@ -151,7 +187,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Um die wichtigen Daten aus den realtiv Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek Serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten w [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die To extract the important data from the relatively complete match information, we wrote a second console program. This has only extracts all the data values from the match-JSON-Files, which we considered for our analysis as interesting. For parsing the JSON-Files we have the library {1} used. The data were then incubated with the library-protobuf serialized. {0} is an incredibly fast and sleek method for serialization of Google. &lt;br /&gt; After that, we only had to analyze and store the values in small samples  [Rest der Zeichenfolge wurde abgeschnitten]&quot;; ähnelt.
         /// </summary>
         public static string DataText3 {
             get {
@@ -358,7 +394,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die For the design of the site, we use {0} with the Theme. With bootstrap can be relatively easy to create a chic layout. For the charts, we have opted for the javascript library {1}. This is to use relatively comfortable, but we had to make a small adjustment in order to display the icons in the X-axis can. ähnelt.
         /// </summary>
         public static string PresentationText1 {
             get {
@@ -412,7 +448,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die The tear represents the cases where the player didn&apos;t pick any of the mercanaries. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die The tear represents the cases where the player didn&apos;t pick any of the mercenaries. ähnelt.
         /// </summary>
         public static string TearNote {
             get {
@@ -430,7 +466,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die For development we mainly user {0}. The development environment form Microsoft is available for free, in no-commercial projects.  It makes developing MVC Webapplications  very easy. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die For development we mainly used {0}. The development environment form Microsoft is available for free, in no-commercial projects.  It makes developing MVC Webapplications  very easy. ähnelt.
         /// </summary>
         public static string ToolsText1 {
             get {
@@ -439,7 +475,7 @@ namespace Lol.Bilgewater.Resources {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Besides the programm offers an very simple GIT-Integration and an option to publish your project without complications on your {0}. Also every additional library can be easyly fetched via nuget integration in your project. We did it for all our external libraries. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Besides the programm offers an very simple GIT-Integration and an option to publish your project without complications on your {0}. Also every additional library can be easily fetched via nuget integration in your project. We did it for all our external libraries. ähnelt.
         /// </summary>
         public static string ToolsText2 {
             get {

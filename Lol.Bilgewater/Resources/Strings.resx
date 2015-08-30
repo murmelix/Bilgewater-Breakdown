@@ -142,13 +142,13 @@
     <value>Data processing</value>
   </data>
   <data name="DataText1" xml:space="preserve">
-    <value>Umd die Daten der Riot Api zu verarbeiten haben wir eine kleine Bibliothek geschrieben, welche die einzelen Datenobjekte abbildet. Später erst haben wir herrausgefunden, dass es soetwas schon gibt.</value>
+    <value>In order to process the data of Riot Api, we wrote a small library, which shows the individual data objects. Later we found out, that something like this already existed.</value>
   </data>
   <data name="DataText2" xml:space="preserve">
-    <value>Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert.</value>
+    <value>To load the many match data, we wrote a small console program, which takes over the API key and a region as a parameter. You could start multiple instances of the program in order to accelerate the download process. The data was then compressed to save space with the library {0} </value>
   </data>
   <data name="DataText3" xml:space="preserve">
-    <value>Um die wichtigen Daten aus den realtiv Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek Serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.</value>
+    <value>To extract the important data from the relatively complete match information, we wrote a second console program. This has only extracts all the data values from the match-JSON-Files, which we considered for our analysis as interesting. For parsing the JSON-Files we have the library {1} used. The data were then incubated with the library-protobuf serialized. {0} is an incredibly fast and sleek method for serialization of Google. &lt;br /&gt; After that, we only had to analyze and store the values in small samples the data values. A database was not necessary.</value>
   </data>
   <data name="Death" xml:space="preserve">
     <value>Death</value>
@@ -217,7 +217,7 @@
     <value>Presentation</value>
   </data>
   <data name="PresentationText1" xml:space="preserve">
-    <value>Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.</value>
+    <value>For the design of the site, we use {0} with the Theme. With bootstrap can be relatively easy to create a chic layout. For the charts, we have opted for the javascript library {1}. This is to use relatively comfortable, but we had to make a small adjustment in order to display the icons in the X-axis can.</value>
   </data>
   <data name="PresentationText2" xml:space="preserve">
     <value>Additional technologies</value>
@@ -235,16 +235,16 @@
     <value>Tank</value>
   </data>
   <data name="TearNote" xml:space="preserve">
-    <value>The tear represents the cases where the player didn't pick any of the mercanaries.</value>
+    <value>The tear represents the cases where the player didn't pick any of the mercenaries.</value>
   </data>
   <data name="Tools" xml:space="preserve">
     <value>Tools</value>
   </data>
   <data name="ToolsText1" xml:space="preserve">
-    <value>For development we mainly user {0}. The development environment form Microsoft is available for free, in no-commercial projects.  It makes developing MVC Webapplications  very easy.</value>
+    <value>For development we mainly used {0}. The development environment form Microsoft is available for free, in no-commercial projects.  It makes developing MVC Webapplications  very easy.</value>
   </data>
   <data name="ToolsText2" xml:space="preserve">
-    <value>Besides the programm offers an very simple GIT-Integration and an option to publish your project without complications on your {0}. Also every additional library can be easyly fetched via nuget integration in your project. We did it for all our external libraries.</value>
+    <value>Besides the programm offers an very simple GIT-Integration and an option to publish your project without complications on your {0}. Also every additional library can be easily fetched via nuget integration in your project. We did it for all our external libraries.</value>
   </data>
   <data name="TopAvgCS" xml:space="preserve">
     <value>Top Avg CS</value>
@@ -269,5 +269,17 @@
   </data>
   <data name="Winrate" xml:space="preserve">
     <value>Winrate</value>
+  </data>
+  <data name="ConclusionChampions" xml:space="preserve">
+    <value>The biggest difference over all champions is the significant loss in CS allover. All top farmers in bilgewater are about 20% lower in farm.</value>
+  </data>
+  <data name="ConclusionDuration" xml:space="preserve">
+    <value>The duration of Bilgewater matches is defenitly quicker. Most goals are earlyier taken, except drake.</value>
+  </data>
+  <data name="ConclusionMercPopularity" xml:space="preserve">
+    <value>The melee mercenaries seem to be more popular, but the winrate is fair distributed. A suprising big number of players, didn't buy a mercenary.</value>
+  </data>
+  <data name="ConclusionRoles" xml:space="preserve">
+    <value>No big variancy on success of different roles. Minor push on tank and fighter.</value>
   </data>
 </root>

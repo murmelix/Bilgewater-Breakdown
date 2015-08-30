@@ -118,165 +118,168 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="All" xml:space="preserve">
-    <value>Alle</value>
+    <value>Tutti</value>
   </data>
   <data name="Assassin" xml:space="preserve">
-    <value>Assassine</value>
+    <value>Assassino</value>
   </data>
   <data name="Assists" xml:space="preserve">
-    <value>Assistiert</value>
+    <value>Assists</value>
   </data>
   <data name="Champions" xml:space="preserve">
     <value>Champions</value>
   </data>
   <data name="Charts" xml:space="preserve">
-    <value>Charts</value>
+    <value>Grafici</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Chiudere</value>
   </data>
   <data name="CS" xml:space="preserve">
     <value>CS</value>
   </data>
   <data name="DataProcessing" xml:space="preserve">
-    <value>Datenaufbereitung</value>
+    <value>Elaborazione dati</value>
+  </data>
+  <data name="DataText1" xml:space="preserve">
+    <value>Al fine di elaborare i dati di Riot Api abbiamo scritto una piccola biblioteca, che mappa gli oggetti di dati einzelen. Solo più tardi abbiamo herrausgefunden che c'è già qualcosa di simile.</value>
   </data>
   <data name="DataText2" xml:space="preserve">
-    <value>Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert.</value>
+    <value>Per caricare i molti dati match, abbiamo scritto un piccolo programma di console, che riprende la chiave API e di una regione come parametro. Si potrebbe iniziare più istanze del programma, al fine di accelerare il processo di download. I dati sono stati quindi compressi per risparmiare spazio con la biblioteca-{0}.</value>
   </data>
   <data name="DataText3" xml:space="preserve">
-    <value>Um die wichtigen Daten aus den relativ Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.</value>
+    <value>Per estrarre i dati importanti dalle informazioni partita relativamente completo, abbiamo scritto un secondo programma di console. Questo ha soltanto degli estratti tutti i valori dei dati dal match-JSON-Files, che abbiamo preso in considerazione per la nostra analisi come interessante. Per l'analisi del JSON-Files abbiamo la biblioteca {1} usato. I dati sono stati poi incubate con la libreria-protobuf serializzato. {0} è un metodo incredibilmente veloce ed elegante per la serializzazione di Google. &lt;br /&gt; Dopo di che, abbiamo avuto solo di analizzare e memorizzare i valori in piccoli campioni i valori dei dati. Un database non era necessario.</value>
   </data>
   <data name="Death" xml:space="preserve">
-    <value>Tode</value>
+    <value>Morte</value>
   </data>
   <data name="Documentation" xml:space="preserve">
-    <value>Dokumentation</value>
+    <value>Documentazione</value>
   </data>
   <data name="DurationStats" xml:space="preserve">
-    <value>Statistik Matchlänge</value>
+    <value>Statistica Partita Lunghezza</value>
   </data>
   <data name="Fighter" xml:space="preserve">
-    <value>Kaempfer</value>
+    <value>combattente</value>
   </data>
   <data name="FirstBaron" xml:space="preserve">
-    <value>Erster Baron</value>
+    <value>barone</value>
   </data>
   <data name="FirstBlood" xml:space="preserve">
-    <value>Erstes Blut</value>
+    <value>sangue</value>
   </data>
   <data name="FirstDrake" xml:space="preserve">
-    <value>Erster Drache</value>
+    <value>Drake</value>
   </data>
   <data name="FirstInhibitor" xml:space="preserve">
-    <value>Erster Inhibitor</value>
+    <value>Inhibitor</value>
   </data>
   <data name="FirstTower" xml:space="preserve">
-    <value>Erster Turm</value>
+    <value>Torre</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>Gegenstände</value>
+    <value>Items</value>
   </data>
   <data name="Kills" xml:space="preserve">
-    <value>Tötungen</value>
+    <value>Kills</value>
   </data>
   <data name="LetsGo" xml:space="preserve">
-    <value>Los geht's</value>
+    <value>Andiamo</value>
   </data>
   <data name="LowesPickrate" xml:space="preserve">
-    <value>Kleinste Pickrate</value>
+    <value>Più basso tasso di ritiro</value>
   </data>
   <data name="LowestAvgCS" xml:space="preserve">
-    <value>Kleinste durchschnittliche CS</value>
+    <value>Minore Avg CS</value>
   </data>
   <data name="LowestWinrate" xml:space="preserve">
-    <value>Kleinste Gewinnrate</value>
+    <value>Più basso tasso di Win</value>
   </data>
   <data name="Mage" xml:space="preserve">
-    <value>Magier</value>
+    <value>Mage</value>
   </data>
   <data name="Marksman" xml:space="preserve">
-    <value>Schuetze</value>
+    <value>tiratore scelto</value>
   </data>
   <data name="Matchduration" xml:space="preserve">
-    <value>Matchlaenge</value>
+    <value>durata</value>
   </data>
   <data name="MercPopularity" xml:space="preserve">
-    <value>Söldner Beliebtheit</value>
+    <value>Mercenari Popolarità</value>
   </data>
   <data name="OnlyBilgewater" xml:space="preserve">
-    <value>nur Bilgewater</value>
+    <value>solo Bilgewater</value>
   </data>
   <data name="Pickrate" xml:space="preserve">
-    <value>Pickrate</value>
+    <value>Scegli tasso</value>
   </data>
   <data name="Presentation" xml:space="preserve">
-    <value>Darstellung</value>
+    <value>Presentazione</value>
   </data>
   <data name="PresentationText1" xml:space="preserve">
-    <value>Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.</value>
+    <value>Per la progettazione del sito, usiamo {0} con il tema. Con bootstrap può essere relativamente facile per creare un layout elegante. Per le classifiche, abbiamo optato per la libreria javascript {1}. Questo è quello di utilizzare relativamente confortevole, ma abbiamo dovuto fare un piccolo aggiustamento al fine di visualizzare le icone nella latta asse X.</value>
   </data>
   <data name="PresentationText2" xml:space="preserve">
-    <value>Weitere Technologien:</value>
+    <value>tecnologie aggiuntive</value>
   </data>
   <data name="Region" xml:space="preserve">
-    <value>Region</value>
+    <value>Regione</value>
   </data>
   <data name="RoleStats" xml:space="preserve">
-    <value>Statistik Rollenperformance</value>
+    <value>Statistica Prestazioni Ruolo</value>
   </data>
   <data name="Support" xml:space="preserve">
-    <value>Unterstuetzung</value>
+    <value>Supporto</value>
   </data>
   <data name="Tank" xml:space="preserve">
-    <value>Tank</value>
+    <value>Carro armato</value>
   </data>
   <data name="TearNote" xml:space="preserve">
-    <value>Die Träne repräsentiert die Fälle wo der Spieler keinen Söldner gekauft hat.</value>
+    <value>La lacrima rappresenta i casi in cui il giocatore non scegliere uno qualsiasi dei mercenari.</value>
   </data>
   <data name="Tools" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>Strumenti</value>
   </data>
   <data name="ToolsText1" xml:space="preserve">
-    <value>Für die Entwicklung haben wir hauptsächlich {0} verwendet. Die Entwicklungsumgebung von Microsoft ist frei verfügbar für den nicht kommerziellen Gebrauch und macht die Entwicklung von einfachen MVC Webanwednungen sehr einfach.</value>
+    <value>Per lo sviluppo abbiamo utilizzato principalmente {0}. L'ambiente di sviluppo modulo di Microsoft è disponibile gratuitamente, senza mezzi commerciali progetti. Rende sviluppo di applicazioni web MVC molto facile.</value>
   </data>
   <data name="ToolsText2" xml:space="preserve">
-    <value>Das Programm bietet zudem eine sehr einfache GIT-Integration und man kann sein Projekt unglaublich unkompliziert auf seiner {0} publizieren. Was außerdem wirklich praktisch ist, ist die Möglichkeit allerlei Nuget-Pakete in sein Projekt zu ziehen. Alle Bibliotheken die wir für die Entwicklung des Projektes benutzt habe waren im Nuget Verzeichnis verfügbar.</value>
+    <value>Oltre al programma offre una molto semplice GIT-integrazione e la possibilità di pubblicare il progetto senza complicazioni sul {0}. Inoltre ogni libreria aggiuntiva può essere facilmente recuperato attraverso l'integrazione NuGet nel progetto. Lo abbiamo fatto per tutti i nostri librerie esterne.</value>
   </data>
   <data name="TopAvgCS" xml:space="preserve">
-    <value>Höchste durchschnittliche CS</value>
+    <value>Top Avg CS</value>
   </data>
   <data name="TopPickrate" xml:space="preserve">
-    <value>Höchste Pickrate</value>
+    <value>Tasso Top Pick</value>
   </data>
   <data name="TopWinrate" xml:space="preserve">
-    <value>Höchste Gewinnrate</value>
+    <value>Top Win tasso</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Willkommen</value>
+    <value>Benvenuto</value>
   </data>
   <data name="WelcomeText1" xml:space="preserve">
-    <value>Bei unserem Beitrag zu der API-Challenge 2.0 wollten wir uns dem 1. möglichen Thema widmen:</value>
+    <value>Con la nostra voce per l'API-Challenge 2.0 abbiamo voluto dedicare al 1. di possibili argomenti:</value>
   </data>
   <data name="WelcomeText2" xml:space="preserve">
-    <value>Wir haben uns Gedanken gemacht, welche Informationen interessant sein könnten. Unser primäres Ziel war zu analysieren welche Söldner für die Spieler besonders Interessant waren und ob die Spiellänge sich durch die stärkeren Minions verkürzt hat.</value>
+    <value>Abbiamo pensato che delle informazioni potrebbe essere interessante. Il nostro obiettivo primario è stato quello di analizzare quali mercenari sono stati più popolare tra la base di giocatori e se la lunghezza gioco sarebbe influenzato dai tirapiedi forti.</value>
   </data>
   <data name="WelcomeText3" xml:space="preserve">
-    <value>Als Zusatz haben wir noch ein paar Statistiken zu der Performance der einzelnen Champions und Items hinzugefügt.</value>
+    <value>In aggiunta abbiamo aggiunto alcune statistiche da prestazioni di ogni campione e la voce.</value>
   </data>
   <data name="Winrate" xml:space="preserve">
-    <value>Gewinnrate</value>
+    <value>Win tasso</value>
   </data>
   <data name="ConclusionChampions" xml:space="preserve">
-    <value>Der größte Unterschied ist bei den durschnittlichen CS zu erkennen. Alle Top-Farmer haben ca. 20% weniger Farm als im Ranked.</value>
+    <value>La differenza più grande su tutti i campioni è la perdita significativa in CS allover. Tutti i migliori agricoltori in bilgewater sono inferiori di circa il 20% in agriturismo.</value>
   </data>
   <data name="ConclusionDuration" xml:space="preserve">
-    <value>Die Bilgewater-Matches waren merkbar kürzer. Auch alle Ziele wurden in der Regel früher getroffen, ausgenommen der Drache.</value>
+    <value>La durata di partite Bilgewater è defenitly più veloce. Più gol sono earlyier prese, ad eccezione di Drake.</value>
   </data>
   <data name="ConclusionMercPopularity" xml:space="preserve">
-    <value>Die Nahkampf-Söldner waren am beliebtesten, allerdings sticht keiner der Typen bezüglich Winrate herraus. Eine überraschend große Menge an Spielern kaufte gar keinen Söldner.</value>
+    <value>I mercenari mischia sembrano essere più popolare, ma il tasso di vincita è giusto distribuiti. Un suprising gran numero di giocatori, non ha acquistato un mercenario.</value>
   </data>
   <data name="ConclusionRoles" xml:space="preserve">
-    <value>Keine großen Unterschiede bei den Rollen. Tanks und Kämpfer sind ein winziges bisschen besser als im Ranked.</value>
+    <value>Nessun grande il variare in caso di successo di diversi ruoli. Spinta minore sul serbatoio e combattente.</value>
   </data>
 </root>

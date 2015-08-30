@@ -18,6 +18,48 @@ namespace Lol.Api.Static.Items
     public class StaticJsonAdapter
     {
         private string _cachePath;
+        public static string[] SupportedCultures = new string[] { "bg_BG",
+            "cs_CZ",
+            "de_DE",
+            "el_GR",
+            "en_AU",
+            "en_GB",
+            "en_PH",
+            "en_PL",
+            "en_SG",
+            "en_US",
+            "es_AR",
+            "es_ES",
+            "es_MX",
+            "fr_FR",
+            "hu_HU",
+            "id_ID",
+            "it_IT",
+            "ja_JP",
+            "ko_KR" ,
+            "nl_NL",
+            "ms_MY",
+            "pl_PL",
+            "pt_BR",
+            "pt_PT",
+            "ro_RO",
+            "ru_RU",
+            "th_TH",
+            "tr_TR",
+            "vn_VN",
+            "zh_CN",
+            "zh_MY",
+            "zh_TW"};
+
+        public string SafeLocale(string locale)
+        {
+            if (SupportedCultures.Contains(locale))
+                return locale;
+            else if (SupportedCultures.Any(x => x.Substring(0, 2) == locale.Substring(0, 2)))
+                return SupportedCultures.First(x => x.Substring(0, 2) == locale.Substring(0, 2));
+            else
+                return "en_US";
+        }
 
         public StaticJsonAdapter(string chachePath)
         {
@@ -57,7 +99,7 @@ namespace Lol.Api.Static.Items
                         zip.BeginUpdate();
                         using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                             sw.Write(json);
-                        zip.Add(path,matchId+".json");
+                        zip.Add(path, matchId + ".json");
                         zip.CommitUpdate();
                         File.Delete(path);
                         return JsonConvert.DeserializeObject<MatchDetail>(json, new JsonSerializerSettings { Culture = Thread.CurrentThread.CurrentUICulture, });
@@ -68,6 +110,7 @@ namespace Lol.Api.Static.Items
 
         public ItemList ListItems(string region, string locale, string apikey)
         {
+            locale = SafeLocale(locale);
             string path = Path.Combine(_cachePath, region, locale, "items.json");
             string jsonFromCache = GetJsonFromCache(path);
             if (jsonFromCache != null)
@@ -80,7 +123,18 @@ namespace Lol.Api.Static.Items
                 wc.Encoding = Encoding.UTF8;
                 using (wc)
                 {
-                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/item?locale={0}&itemListData=all&api_key={1}&version=5.14.1", locale, apikey, region));
+                    string json ="";
+                    do
+                    {
+                        try
+                        {
+                            json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/item?locale={0}&itemListData=all&api_key={1}&version=5.14.1", locale, apikey, region));
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+                    } while (false);
                     using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                         sw.Write(json);
                     return JsonConvert.DeserializeObject<ItemList>(json, new JsonSerializerSettings { Culture = Thread.CurrentThread.CurrentUICulture, });
@@ -90,6 +144,7 @@ namespace Lol.Api.Static.Items
 
         public ChampionList ListChampions(string region, string locale, string apikey)
         {
+            locale = SafeLocale(locale);
             string path = Path.Combine(_cachePath, region, locale, "champions.json");
             string jsonFromCache = GetJsonFromCache(path);
             if (jsonFromCache != null)
@@ -102,10 +157,23 @@ namespace Lol.Api.Static.Items
                 wc.Encoding = Encoding.UTF8;
                 using (wc)
                 {
-                    var json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/champion?locale={0}&champData=all&api_key={1}&version=5.14.1", locale, apikey, region));
+                    string json = "";
+                    do
+                    {
+                        try
+                        {
+                            json = wc.DownloadString(string.Format("https://global.api.pvp.net/api/lol/static-data/{2}/v1.2/champion?locale={0}&champData=all&api_key={1}&version=5.14.1", locale, apikey, region));
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+                    } while (false);
                     using (var sw = new StreamWriter(path, false, Encoding.UTF8))
                         sw.Write(json);
+
                     return JsonConvert.DeserializeObject<ChampionList>(json, new JsonSerializerSettings { Culture = Thread.CurrentThread.CurrentUICulture, });
+
                 }
             }
         }
@@ -129,7 +197,7 @@ namespace Lol.Api.Static.Items
         private string GetJsonFromCache(ZipFile zip, string p)
         {
             var entry = zip.GetEntry(p);
-            if(entry == null)
+            if (entry == null)
                 return null;
             using (var sr = new StreamReader(zip.GetInputStream(entry), Encoding.UTF8))
             {

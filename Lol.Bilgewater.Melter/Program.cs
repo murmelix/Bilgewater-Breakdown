@@ -45,7 +45,7 @@ namespace Lol.Bilgewater.Melter
             data_path = System.Configuration.ConfigurationSettings.AppSettings["DataPath"];
             sample_path = Path.Combine(data_path, currentSource, "Samples");
             ReadMetaData();
-            //RefineMatchData();
+            RefineMatchData();
             CreateSamples();
             System.Console.ReadLine();
         }

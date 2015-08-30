@@ -118,165 +118,159 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="All" xml:space="preserve">
-    <value>Alle</value>
+    <value>hepsi</value>
   </data>
   <data name="Assassin" xml:space="preserve">
-    <value>Assassine</value>
+    <value>katil</value>
   </data>
   <data name="Assists" xml:space="preserve">
-    <value>Assistiert</value>
+    <value>asist</value>
   </data>
   <data name="Champions" xml:space="preserve">
-    <value>Champions</value>
+    <value>Şampiyonlar</value>
   </data>
   <data name="Charts" xml:space="preserve">
-    <value>Charts</value>
+    <value>Grafikler</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Kapat</value>
   </data>
   <data name="CS" xml:space="preserve">
     <value>CS</value>
   </data>
   <data name="DataProcessing" xml:space="preserve">
-    <value>Datenaufbereitung</value>
+    <value>Veri işleme</value>
+  </data>
+  <data name="DataText1" xml:space="preserve">
+    <value>Riot Api verileri işlemek için, biz tek tek veri nesneleri gösteren küçük bir kütüphane, yazdı. Daha sonra öğrendim, böyle bir şeyin zaten vardı.</value>
   </data>
   <data name="DataText2" xml:space="preserve">
-    <value>Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert.</value>
+    <value>Birçok maç verilerini yüklemek için, bir parametre olarak API anahtarı ve bir bölge devraldı küçük bir konsol programı yazdı. Sen indirme işlemini hızlandırmak için programın birden çok örneği başlayabiliriz. Veriler daha sonra kütüphane ile yer kazanmak için sıkıştırılmış {0}</value>
   </data>
   <data name="DataText3" xml:space="preserve">
-    <value>Um die wichtigen Daten aus den relativ Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.</value>
+    <value>Nispeten komple maç bilgilerinden önemli veri ayıklamak için, ikinci bir konsol programı yazdı. Bu, yalnızca ilginç olarak bizim analiz için düşünülen maç-JSON-Files, tüm veri değerleri ayıklar etti. JSON-Files ayrıştırma için biz kütüphane {1} kullanmışlardır. Bu veriler daha sonra seri hale kütüphane protobuf ile inkübe edilmiştir. {0} Google seri için inanılmaz hızlı ve şık bir yöntemdir. &lt;br /&gt; Bundan sonra, sadece analiz etmek ve küçük örneklerinde veri değerleri değerleri depolamak zorunda kaldı. Bir veritabanı, gerekli değildi.</value>
   </data>
   <data name="Death" xml:space="preserve">
-    <value>Tode</value>
+    <value>Ölüm</value>
   </data>
   <data name="Documentation" xml:space="preserve">
-    <value>Dokumentation</value>
+    <value>Belgeler</value>
   </data>
   <data name="DurationStats" xml:space="preserve">
-    <value>Statistik Matchlänge</value>
-  </data>
-  <data name="Fighter" xml:space="preserve">
-    <value>Kaempfer</value>
+    <value>İstatistikler Maç uzunluğu</value>
   </data>
   <data name="FirstBaron" xml:space="preserve">
-    <value>Erster Baron</value>
+    <value>İlk Baron</value>
   </data>
   <data name="FirstBlood" xml:space="preserve">
-    <value>Erstes Blut</value>
+    <value>İlk kan</value>
   </data>
   <data name="FirstDrake" xml:space="preserve">
-    <value>Erster Drache</value>
-  </data>
-  <data name="FirstInhibitor" xml:space="preserve">
-    <value>Erster Inhibitor</value>
+    <value>İlk Drake</value>
   </data>
   <data name="FirstTower" xml:space="preserve">
-    <value>Erster Turm</value>
+    <value>İlk Kulesi</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>Gegenstände</value>
+    <value>Öğeler</value>
   </data>
   <data name="Kills" xml:space="preserve">
-    <value>Tötungen</value>
+    <value>Ölü</value>
   </data>
   <data name="LetsGo" xml:space="preserve">
-    <value>Los geht's</value>
+    <value>Haydi gidelim</value>
   </data>
   <data name="LowesPickrate" xml:space="preserve">
-    <value>Kleinste Pickrate</value>
+    <value>en düşük Pickrate</value>
   </data>
   <data name="LowestAvgCS" xml:space="preserve">
-    <value>Kleinste durchschnittliche CS</value>
+    <value>en düşük Avg CS</value>
   </data>
   <data name="LowestWinrate" xml:space="preserve">
-    <value>Kleinste Gewinnrate</value>
+    <value>en düşük Winrate</value>
   </data>
   <data name="Mage" xml:space="preserve">
-    <value>Magier</value>
+    <value>sihirbaz</value>
   </data>
   <data name="Marksman" xml:space="preserve">
-    <value>Schuetze</value>
-  </data>
-  <data name="Matchduration" xml:space="preserve">
-    <value>Matchlaenge</value>
+    <value>nişancı</value>
   </data>
   <data name="MercPopularity" xml:space="preserve">
-    <value>Söldner Beliebtheit</value>
+    <value>Mercenary Popülerlik</value>
   </data>
   <data name="OnlyBilgewater" xml:space="preserve">
-    <value>nur Bilgewater</value>
+    <value>sadece Bilgewater</value>
   </data>
   <data name="Pickrate" xml:space="preserve">
     <value>Pickrate</value>
   </data>
   <data name="Presentation" xml:space="preserve">
-    <value>Darstellung</value>
+    <value>sunuş</value>
   </data>
   <data name="PresentationText1" xml:space="preserve">
-    <value>Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.</value>
+    <value>Sitenin tasarımı için, Tema {0} kullanın. Bootstrap ile şık bir düzen oluşturmak için nispeten kolay olabilir. Grafikleri için, javascript kütüphanesinden {1} için seçtiniz. Bu nispeten rahat kullanmak için, ama biz X ekseni can simgeleri görüntülemek için küçük bir ayarlama yapmak zorunda kaldı.</value>
   </data>
   <data name="PresentationText2" xml:space="preserve">
-    <value>Weitere Technologien:</value>
+    <value>Ek teknolojiler</value>
   </data>
   <data name="Region" xml:space="preserve">
-    <value>Region</value>
+    <value>yöre</value>
   </data>
   <data name="RoleStats" xml:space="preserve">
-    <value>Statistik Rollenperformance</value>
+    <value>İstatistikler Rol performansı</value>
   </data>
   <data name="Support" xml:space="preserve">
-    <value>Unterstuetzung</value>
+    <value>yardım</value>
   </data>
   <data name="Tank" xml:space="preserve">
     <value>Tank</value>
   </data>
   <data name="TearNote" xml:space="preserve">
-    <value>Die Träne repräsentiert die Fälle wo der Spieler keinen Söldner gekauft hat.</value>
+    <value>Gözyaşı oyuncu mercanaries herhangi açmadı durumları temsil eder.</value>
   </data>
   <data name="Tools" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>Araçlar</value>
   </data>
   <data name="ToolsText1" xml:space="preserve">
-    <value>Für die Entwicklung haben wir hauptsächlich {0} verwendet. Die Entwicklungsumgebung von Microsoft ist frei verfügbar für den nicht kommerziellen Gebrauch und macht die Entwicklung von einfachen MVC Webanwednungen sehr einfach.</value>
+    <value>Kalkınma için biz ağırlıklı olarak kullanılan {0}. Microsoft formu geliştirme ortamı hiçbir ticari projelerde, ücretsiz olarak kullanılabilir. Bu çok kolay MVC web uygulamaları geliştirme yapar.</value>
   </data>
   <data name="ToolsText2" xml:space="preserve">
-    <value>Das Programm bietet zudem eine sehr einfache GIT-Integration und man kann sein Projekt unglaublich unkompliziert auf seiner {0} publizieren. Was außerdem wirklich praktisch ist, ist die Möglichkeit allerlei Nuget-Pakete in sein Projekt zu ziehen. Alle Bibliotheken die wir für die Entwicklung des Projektes benutzt habe waren im Nuget Verzeichnis verfügbar.</value>
+    <value>Programm bir çok basit GIT-Entegrasyon ve komplikasyon olmadan projeyi yayımlamak için bir seçenek sunuyor yanında senin {0}. Ayrıca her ek kütüphane projesinde Nuget entegrasyon yoluyla easyly getirilen olabilir. Hepimiz dış kütüphaneleri için yaptım.</value>
   </data>
   <data name="TopAvgCS" xml:space="preserve">
-    <value>Höchste durchschnittliche CS</value>
+    <value>katil Avg CS</value>
   </data>
   <data name="TopPickrate" xml:space="preserve">
-    <value>Höchste Pickrate</value>
+    <value>katil Pickrate</value>
   </data>
   <data name="TopWinrate" xml:space="preserve">
-    <value>Höchste Gewinnrate</value>
+    <value>katil Winrate</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Willkommen</value>
+    <value>Hoşgeldiniz</value>
   </data>
   <data name="WelcomeText1" xml:space="preserve">
-    <value>Bei unserem Beitrag zu der API-Challenge 2.0 wollten wir uns dem 1. möglichen Thema widmen:</value>
+    <value>API Mücadelesi 2.0 için giriş ile olası konuların 1. adamak istedim:</value>
   </data>
   <data name="WelcomeText2" xml:space="preserve">
-    <value>Wir haben uns Gedanken gemacht, welche Informationen interessant sein könnten. Unser primäres Ziel war zu analysieren welche Söldner für die Spieler besonders Interessant waren und ob die Spiellänge sich durch die stärkeren Minions verkürzt hat.</value>
+    <value>Biz bilgilerin hangi ilginç olabileceğini düşündüm. Birincil hedefimiz gamelength güçlü kölelerinin etkilenecek eğer paralı askerler playerbase arasında en popüler ve hangi analiz etmek oldu.</value>
   </data>
   <data name="WelcomeText3" xml:space="preserve">
-    <value>Als Zusatz haben wir noch ein paar Statistiken zu der Performance der einzelnen Champions und Items hinzugefügt.</value>
+    <value>Ek olarak her şampiyon ve ürünün performansı bazı istatistikler ekledi.</value>
   </data>
   <data name="Winrate" xml:space="preserve">
-    <value>Gewinnrate</value>
+    <value>Winrate</value>
   </data>
   <data name="ConclusionChampions" xml:space="preserve">
-    <value>Der größte Unterschied ist bei den durschnittlichen CS zu erkennen. Alle Top-Farmer haben ca. 20% weniger Farm als im Ranked.</value>
+    <value>Самая большая разница по всем чемпионам является значительная потеря в CS повторяющийся. Все топ-фермеры в Трюмных Вод около 20% ниже, в ферме.</value>
   </data>
   <data name="ConclusionDuration" xml:space="preserve">
-    <value>Die Bilgewater-Matches waren merkbar kürzer. Auch alle Ziele wurden in der Regel früher getroffen, ausgenommen der Drache.</value>
+    <value>Продолжительность Трюмных Вод матчей defenitly быстрее. Большинство цели earlyier приняты, за исключением селезня.</value>
   </data>
   <data name="ConclusionMercPopularity" xml:space="preserve">
-    <value>Die Nahkampf-Söldner waren am beliebtesten, allerdings sticht keiner der Typen bezüglich Winrate herraus. Eine überraschend große Menge an Spielern kaufte gar keinen Söldner.</value>
+    <value>В ближнем бою наемники, кажется, более популярны, но винрейт будет справедливо распределены.Удивительно, большое количество игроков, не купить наемника.</value>
   </data>
   <data name="ConclusionRoles" xml:space="preserve">
-    <value>Keine großen Unterschiede bei den Rollen. Tanks und Kämpfer sind ein winziges bisschen besser als im Ranked.</value>
+    <value>Нет большой variancy на успех различных ролей. Малой нажатие на баке и истребителя.</value>
   </data>
 </root>

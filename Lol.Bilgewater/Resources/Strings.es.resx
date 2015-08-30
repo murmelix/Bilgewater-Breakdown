@@ -118,165 +118,162 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="All" xml:space="preserve">
-    <value>Alle</value>
+    <value>Todo el mundo</value>
   </data>
   <data name="Assassin" xml:space="preserve">
-    <value>Assassine</value>
+    <value>Assassin</value>
   </data>
   <data name="Assists" xml:space="preserve">
-    <value>Assistiert</value>
+    <value>asistida</value>
   </data>
   <data name="Champions" xml:space="preserve">
-    <value>Champions</value>
+    <value>Campeones</value>
   </data>
   <data name="Charts" xml:space="preserve">
-    <value>Charts</value>
+    <value>Gráficas</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Schließen</value>
+    <value>Cierre</value>
   </data>
   <data name="CS" xml:space="preserve">
     <value>CS</value>
   </data>
   <data name="DataProcessing" xml:space="preserve">
-    <value>Datenaufbereitung</value>
+    <value>preparación de datos</value>
   </data>
   <data name="DataText2" xml:space="preserve">
-    <value>Um die vielen Match-Daten zu laden, haben wir ein kleines Konsolen-Programm geschrieben, welches den API-Key und eine Region als Parameter übernimmt. Man konnte mehrere Instanzen des Programmes starten um den Download zu beschleunigen. Die Daten wurden dann um Platz zu sparen mit der Bibilothek {0} komprimiert.</value>
+    <value>Para cargar los datos de los partidos muchos, escribimos un programa de consola pequeña, que se hace cargo de la clave de API y una región como parámetro. Usted podría comenzar a varias instancias del programa con el fin de acelerar el proceso de descarga. A continuación, los datos se comprime para ahorrar espacio con la biblioteca {0}</value>
   </data>
   <data name="DataText3" xml:space="preserve">
-    <value>Um die wichtigen Daten aus den relativ Umfangreichen Matchinformationen zu extrahieren, haben wir ein zweites Konsolen-Programm geschrieben. Dieses hat erst alle Datenwerte aus dem Match-JSON-Files extrahiert, welche wir für unsere Auswertung als interessant erachteten.  Für das Parsen der JSON-Files haben wir die Bibliothek {1} verwendet. Die Daten wurden dann mit der Protobuf Bibilothek serialisiert. {0} ist eine unheimlich schnelle und schlanke Methode für Serialisierung von Google.&lt;br /&gt;Danach mussten wir die Datenwerte nur noch analysieren und die Werte in kleinen Samples speichern. Eine Datenbank war nicht notwendig.</value>
+    <value>Para extraer los datos importantes de la información relativamente completa partido, escribimos un segundo programa de la consola. Esto sólo ha extrae todos los valores de los datos desde el partido-JSON-Files, que hemos considerado para nuestro análisis de interesante. Para analizar el JSON-Files tenemos la biblioteca {1} utilizado. Los datos fueron serializados con la biblioteca-protobuf. {0} es un método muy rápido y elegante para la serialización de Google. &lt;br /&gt; Después de eso, sólo tuvimos que analizar y almacenar los valores en muestras pequeñas de los valores de datos. Una base de datos no era necesario.</value>
   </data>
   <data name="Death" xml:space="preserve">
-    <value>Tode</value>
+    <value>fallecimiento</value>
   </data>
   <data name="Documentation" xml:space="preserve">
-    <value>Dokumentation</value>
+    <value>Documentación</value>
   </data>
   <data name="DurationStats" xml:space="preserve">
-    <value>Statistik Matchlänge</value>
+    <value>Estadísticas Partido Longitud</value>
   </data>
   <data name="Fighter" xml:space="preserve">
-    <value>Kaempfer</value>
+    <value>Luchador</value>
   </data>
   <data name="FirstBaron" xml:space="preserve">
-    <value>Erster Baron</value>
+    <value>Baron</value>
   </data>
   <data name="FirstBlood" xml:space="preserve">
-    <value>Erstes Blut</value>
+    <value>sangre</value>
   </data>
   <data name="FirstDrake" xml:space="preserve">
-    <value>Erster Drache</value>
+    <value>dragon</value>
   </data>
   <data name="FirstInhibitor" xml:space="preserve">
-    <value>Erster Inhibitor</value>
+    <value> inhibidor</value>
   </data>
   <data name="FirstTower" xml:space="preserve">
-    <value>Erster Turm</value>
+    <value>Torre</value>
   </data>
   <data name="Items" xml:space="preserve">
-    <value>Gegenstände</value>
+    <value>Artículos</value>
   </data>
   <data name="Kills" xml:space="preserve">
-    <value>Tötungen</value>
+    <value>asesinatos</value>
   </data>
   <data name="LetsGo" xml:space="preserve">
-    <value>Los geht's</value>
+    <value>Aquí vamos</value>
   </data>
   <data name="LowesPickrate" xml:space="preserve">
-    <value>Kleinste Pickrate</value>
+    <value>Más pequeña tasa de recogida</value>
   </data>
   <data name="LowestAvgCS" xml:space="preserve">
-    <value>Kleinste durchschnittliche CS</value>
+    <value>Promedio más pequeño CS</value>
   </data>
   <data name="LowestWinrate" xml:space="preserve">
-    <value>Kleinste Gewinnrate</value>
-  </data>
-  <data name="Mage" xml:space="preserve">
-    <value>Magier</value>
+    <value>Más pequeña tasa de ganar</value>
   </data>
   <data name="Marksman" xml:space="preserve">
-    <value>Schuetze</value>
+    <value>Sagitario</value>
   </data>
   <data name="Matchduration" xml:space="preserve">
-    <value>Matchlaenge</value>
+    <value>Duracion</value>
   </data>
   <data name="MercPopularity" xml:space="preserve">
-    <value>Söldner Beliebtheit</value>
+    <value>popularidad Mercenario</value>
   </data>
   <data name="OnlyBilgewater" xml:space="preserve">
-    <value>nur Bilgewater</value>
+    <value>solo Bilgewater</value>
   </data>
   <data name="Pickrate" xml:space="preserve">
-    <value>Pickrate</value>
+    <value>tasa de recogida</value>
   </data>
   <data name="Presentation" xml:space="preserve">
-    <value>Darstellung</value>
+    <value>declaración</value>
   </data>
   <data name="PresentationText1" xml:space="preserve">
-    <value>Für das Design der Website verwenden wir {0} mit dem Theme . Mit Bootstrap lässt sich relativ einfach ein schickes Layout erstellen. Für die Charts haben wir uns für die Javascript-Bibliothek {1} entschieden. Diese ist relativ komfortable zu benutzen, allerdings mussten wir eine kleine Anpassung vornehmen, um die Icons in der X-Achse anzeigen zu können.</value>
+    <value>Para el diseño del sitio, utilizamos {0} con el tema. Con arranque puede ser relativamente fácil de crear un diseño elegante. Para las listas de éxitos, se ha optado por la biblioteca javascript {1}. Este es el uso relativamente cómoda, pero tuvimos que hacer un pequeño ajuste con el fin de mostrar los iconos en la lata del eje X.</value>
   </data>
   <data name="PresentationText2" xml:space="preserve">
-    <value>Weitere Technologien:</value>
+    <value>Otras tecnologías:</value>
   </data>
   <data name="Region" xml:space="preserve">
-    <value>Region</value>
+    <value>comarca</value>
   </data>
   <data name="RoleStats" xml:space="preserve">
-    <value>Statistik Rollenperformance</value>
+    <value>Estadísticas papeles Rendimiento</value>
   </data>
   <data name="Support" xml:space="preserve">
-    <value>Unterstuetzung</value>
+    <value>Soporte</value>
   </data>
   <data name="Tank" xml:space="preserve">
-    <value>Tank</value>
+    <value>tanque</value>
   </data>
   <data name="TearNote" xml:space="preserve">
-    <value>Die Träne repräsentiert die Fälle wo der Spieler keinen Söldner gekauft hat.</value>
+    <value>La lágrima representa los casos en que el jugador no ha comprado un mercenario.</value>
   </data>
   <data name="Tools" xml:space="preserve">
-    <value>Werkzeuge</value>
+    <value>instrumentos</value>
   </data>
   <data name="ToolsText1" xml:space="preserve">
-    <value>Für die Entwicklung haben wir hauptsächlich {0} verwendet. Die Entwicklungsumgebung von Microsoft ist frei verfügbar für den nicht kommerziellen Gebrauch und macht die Entwicklung von einfachen MVC Webanwednungen sehr einfach.</value>
+    <value>Para el desarrollo, hemos principalmente {0} utilizado. El entorno de desarrollo de Microsoft está disponible de forma gratuita para uso no comercial y hace que el desarrollo de sencilla MVC Webanwednungen muy simple.</value>
   </data>
   <data name="ToolsText2" xml:space="preserve">
-    <value>Das Programm bietet zudem eine sehr einfache GIT-Integration und man kann sein Projekt unglaublich unkompliziert auf seiner {0} publizieren. Was außerdem wirklich praktisch ist, ist die Möglichkeit allerlei Nuget-Pakete in sein Projekt zu ziehen. Alle Bibliotheken die wir für die Entwicklung des Projektes benutzt habe waren im Nuget Verzeichnis verfügbar.</value>
+    <value>El programa también proporciona una muy simple integración GIT y publicar increíblemente complicada su proyecto en su {0}. Lo que también es muy útil es la capacidad de dibujar todo tipo paquetes Nuget en su proyecto. Todas las bibliotecas que hemos utilizado para el desarrollo del proyecto estaban disponibles en el directorio Nuget.</value>
   </data>
   <data name="TopAvgCS" xml:space="preserve">
-    <value>Höchste durchschnittliche CS</value>
+    <value>Promedio más alto CS</value>
   </data>
   <data name="TopPickrate" xml:space="preserve">
-    <value>Höchste Pickrate</value>
+    <value>Mayor tasa de recogida</value>
   </data>
   <data name="TopWinrate" xml:space="preserve">
-    <value>Höchste Gewinnrate</value>
+    <value>Mayor tasa de ganancias</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Willkommen</value>
+    <value>Bienvenidos</value>
   </data>
   <data name="WelcomeText1" xml:space="preserve">
-    <value>Bei unserem Beitrag zu der API-Challenge 2.0 wollten wir uns dem 1. möglichen Thema widmen:</value>
+    <value>En nuestra contribución al Desafío API 2.0 queríamos dedicarnos al primer tema posible:</value>
   </data>
   <data name="WelcomeText2" xml:space="preserve">
-    <value>Wir haben uns Gedanken gemacht, welche Informationen interessant sein könnten. Unser primäres Ziel war zu analysieren welche Söldner für die Spieler besonders Interessant waren und ob die Spiellänge sich durch die stärkeren Minions verkürzt hat.</value>
+    <value>Pensamos en qué tipo de información puede ser de interés. Nuestro objetivo principal fue analizar que los mercenarios eran particularmente interesante para los jugadores y si la duración del juego se ha reducido en los esbirros más fuertes.</value>
   </data>
   <data name="WelcomeText3" xml:space="preserve">
-    <value>Als Zusatz haben wir noch ein paar Statistiken zu der Performance der einzelnen Champions und Items hinzugefügt.</value>
+    <value>Como además hemos añadido algunas estadísticas más sobre el desempeño de los campeones y artículos individuales.</value>
   </data>
   <data name="Winrate" xml:space="preserve">
-    <value>Gewinnrate</value>
+    <value>tasa de ganancia</value>
   </data>
   <data name="ConclusionChampions" xml:space="preserve">
-    <value>Der größte Unterschied ist bei den durschnittlichen CS zu erkennen. Alle Top-Farmer haben ca. 20% weniger Farm als im Ranked.</value>
+    <value>La mayor diferencia sobre todos los campeones es la pérdida significativa en CS allover. Todos los primeros agricultores de agua de sentina son un 20% más baja en la granja.</value>
   </data>
   <data name="ConclusionDuration" xml:space="preserve">
-    <value>Die Bilgewater-Matches waren merkbar kürzer. Auch alle Ziele wurden in der Regel früher getroffen, ausgenommen der Drache.</value>
+    <value>La duración de los partidos Pantoque es defenitly más rápido. La mayoría de los objetivos se earlyier tomadas, excepto Drake.</value>
   </data>
   <data name="ConclusionMercPopularity" xml:space="preserve">
-    <value>Die Nahkampf-Söldner waren am beliebtesten, allerdings sticht keiner der Typen bezüglich Winrate herraus. Eine überraschend große Menge an Spielern kaufte gar keinen Söldner.</value>
+    <value>Los mercenarios cuerpo a cuerpo parecen ser más popular, pero el ratio de ganancias se distribuye justo. Un gran número suprising de jugadores, no compró un mercenario.</value>
   </data>
   <data name="ConclusionRoles" xml:space="preserve">
-    <value>Keine großen Unterschiede bei den Rollen. Tanks und Kämpfer sind ein winziges bisschen besser als im Ranked.</value>
+    <value>No es gran función de la variedad en el éxito de los diferentes roles. Empuje Minor en el tanque y luchador.</value>
   </data>
 </root>
